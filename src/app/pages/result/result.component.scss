@@ -1,0 +1,31 @@
+.header {
+    height: 12%;
+    background: #f3f3f4;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .logo {
+        flex: 1;
+    }
+
+    .menus {
+        flex: 1.2;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .item {
+            color: #63b2de;
+            font-size: 20px;
+            letter-spacing: -2px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    }
+}
+
+.content {
+    height: 78%;
+}
