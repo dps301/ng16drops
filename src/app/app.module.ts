@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { Routing } from './app.routes';
 import { ResultComponent } from './pages/result/result.component';
 import { HttpService } from './services/http.service';
+import { FormComponent } from './pages/form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ResultComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,
