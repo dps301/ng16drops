@@ -9,6 +9,13 @@ import { ResultComponent } from './pages/result/result.component';
 import { HttpService } from './services/http.service';
 import { FormComponent } from './pages/form/form.component';
 
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+
+const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +26,8 @@ import { FormComponent } from './pages/form/form.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    Routing
+    Routing,
+    PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG)
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
