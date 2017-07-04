@@ -1,9 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face { 
+    font-family: "KoPub"; 
+    src: url("assets/fonts/KoPubDotumMedium.ttf");
+}
+
 html, body {
     margin: 0px;
     height: 100%;
-    overflow: scroll;
-    overflow-x: hidden;
+    font-family: 'KoPub';
 }
 
 ::-webkit-scrollbar {
