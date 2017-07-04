@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="title">
+    <span class="main">{{title}}</span><span class="sub">{{descript}}</span>
+  </div>
+  <div class="content">
+    <div class="form-item cursor" *ngFor="let item of formData" [ngClass]="{'checked': item.checked == 1}" (click)="item.checked = (item.checked == 1? 0: 1);" >
+      {{item.content}}
+    </div>
+  </div>
+  <div class="btn-success cursor">
+    완료
+  </div>
+</div>

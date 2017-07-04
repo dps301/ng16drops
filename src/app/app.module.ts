@@ -11,6 +11,9 @@ import { FormComponent } from './pages/form/form.component';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { FormSelectComponent } from './components/form-select/form-select.component';
+import { FormCheckComponent } from './components/form-check/form-check.component';
+import { FormInputComponent } from './components/form-input/form-input.component';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -21,6 +24,9 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AppComponent,
     ResultComponent,
     FormComponent,
+    FormSelectComponent,
+    FormCheckComponent,
+    FormInputComponent,
   ],
   imports: [
     BrowserModule,

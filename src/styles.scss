@@ -22,5 +22,8 @@ html, body {
     color: #63B0DB !important;
 }
 .default-text-color.none-active {
-    opacity: 0.4;
+    color: rgba(99, 176, 219, 0.4) !important;
+}
+.default-progress-bg-color {
+    background: #a7daf0;
 }

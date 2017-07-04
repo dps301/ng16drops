@@ -1,18 +1,33 @@
-<div class="header default-bg-color">
-  <div *ngFor="let item of titles; let isFirst = first; let isLast = last; let idx = index;" class="title-item default-text-color" [ngClass]="{'none-active': nowIdx != idx}">
-    <div class="title-text cursor">
-      <div class="index">
-        STEP.{{idx + 1}}
+<div class="container">
+  <div class="header default-bg-color">
+    <div *ngFor="let item of titles; let isFirst = first; let isLast = last; let idx = index;" class="title-item default-text-color" [ngClass]="{'none-active': nowIdx != idx}">
+      <div class="nbsp">
+        &nbsp;
       </div>
-      <div class="content">
-        {{item}}     
+      <div class="title-text cursor" (click)="nowIdx = idx">
+        <div class="index">
+          STEP.{{idx + 1}}
+        </div>
+        <div class="content">
+          {{item}}     
+        </div>
+      </div>
+      <img *ngIf="!isLast" src="assets/images/abovebar.png" alt="">
+      <div *ngIf="isLast" class="nbsp">
+        &nbsp;
       </div>
     </div>
-    <img *ngIf="!isLast" src="assets/images/abovebar.png" alt="">
   </div>
-</div>
-<div class="form-content">
-</div>
-<div class="progress default-bg-color">
-  progress
+  <div class="form-content">
+    <form-check class="not-now"></form-check>
+    <form-check></form-check>
+    <form-check class="not-now"></form-check>
+  </div>
+  <div class="progress default-bg-color">
+    <div class="bar default-progress-bg-color" [style.width]="objIdx / total * 100 + '%'">
+      <div class="percent-container default-text-color">
+        <span class="remain">{{objIdx}}</span><span class="total">&nbsp;/&nbsp;{{total}}</span>
+      </div>
+    </div>
+  </div>
 </div>
