@@ -5,6 +5,7 @@
   <div class="content">
     <div class="form-item cursor" *ngFor="let item of formData; let i = index;" [ngClass]="{'checked': selectedIdx == i}" (click)="selectedIdx = i" >
       {{item.content}}
+      <img *ngIf="selectedIdx == i" src="assets/images/check.png" alt="">
     </div>
   </div>
   <div class="btn-success cursor">

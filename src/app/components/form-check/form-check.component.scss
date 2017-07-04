@@ -20,13 +20,19 @@
         flex-wrap: wrap;
 
         .form-item {
-            flex-basis: 43%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-basis: 35%;
             border: 1px solid white;
-            padding: 9px;
-            padding-left: 10px;
+            padding: 9px 10px;
             margin: 7px;
             margin-left: 0px;
             font-size: 17px;
+
+            img {
+                height: 17px;
+            }
         }
         .form-item:hover {
             background: rgba(255, 255, 255, 0.4);

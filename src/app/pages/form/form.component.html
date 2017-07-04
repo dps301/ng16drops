@@ -4,7 +4,7 @@
       <div class="nbsp">
         &nbsp;
       </div>
-      <div class="title-text cursor" (click)="nowIdx = idx">
+      <div class="title-text cursor" (click)="nowIdx = idx; scrollable.el.scrollTo('s' + idx + 1)">
         <div class="index">
           STEP.{{idx + 1}}
         </div>
@@ -18,10 +18,12 @@
       </div>
     </div>
   </div>
-  <div class="form-content">
-    <form-check class="not-now"></form-check>
-    <form-input></form-input>
-    <form-select class="not-now"></form-select>
+  <div class="form-content scrollable" (scrolledTo)="id=$event" ngui-scrollable>
+    <form-input id="s1"></form-input>
+    <form-check id="s2"></form-check>
+    <form-select id="s3"></form-select>
+    <form-select id="s4"></form-select>
+    <form-select id="s5"></form-select>
   </div>
   <div class="progress default-bg-color">
     <div class="bar default-progress-bg-color" [style.width]="objIdx / total * 100 + '%'">
