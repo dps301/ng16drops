@@ -20,7 +20,7 @@
       "prefix": "app",
       "styles": [
         "styles.scss",
-        "assets/fonts/KoPubDotumMedium.ttf"
+        "assets/fonts/KoPubDotumMedium.woff"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
