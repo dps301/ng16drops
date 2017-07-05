@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+declare var $: any;
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -14,6 +16,12 @@ export class FormComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    $(window).on("load", () => {
+      $("a[rel='m_PageScroll2id']").mPageScroll2id({
+        layout: "horizontal",
+        forceSingleHighlight: true,
+        offset:"#id"
+      });
+    });
   }
-
 }
