@@ -1,6 +1,6 @@
 <div class="container">
   <div class="header default-bg-color">
-    <a *ngFor="let item of titles; let isFirst = first; let isLast = last; let idx = index;" rel="m_PageScroll2id" [attr.href]="'#s'+ (idx + 1)" class="title-item default-text-color none-active">
+    <a *ngFor="let item of items; let isFirst = first; let isLast = last; let idx = index;" rel="m_PageScroll2id" [attr.href]="'#s'+ (idx + 1)" class="title-item default-text-color none-active">
       <div class="nbsp">
         &nbsp;
       </div>
@@ -9,7 +9,7 @@
           STEP.{{idx + 1}}
         </div>
         <div class="content">
-          {{item}}     
+          {{item.title}}     
         </div>
       </div>
       <img *ngIf="!isLast" src="assets/images/abovebar.png" alt="">
@@ -19,11 +19,23 @@
     </a>
   </div>
   <div class="form-content">
-    <form-input id="s1"></form-input>
+    <ng-container *ngFor="let item of items; let i = index;">
+      <ng-container *ngFor="let menu of item.menu">
+        <ng-container [ngSwitch]="menu.type">
+          <form-input [id]="'s'+(i+1)" *ngSwitchCase="0">
+          </form-input>
+          <form-select [id]="'s'+(i+1)" *ngSwitchCase="1">
+          </form-select>
+          <form-check [id]="'s'+(i+1)" *ngSwitchCase="2">
+          </form-check>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+    <!--<form-input id="s1"></form-input>
     <form-check id="s2"></form-check>
     <form-select id="s3"></form-select>
     <form-select id="s4"></form-select>
-    <form-select id="s5"></form-select>
+    <form-select id="s5"></form-select>-->
   </div>
   <div class="progress default-bg-color">
     <div class="bar default-progress-bg-color" [style.width]="objIdx / total * 100 + '%'">
