@@ -12,7 +12,6 @@ import { FormComponent } from './pages/form/form.component';
 import { FormSelectComponent } from './components/form-select/form-select.component';
 import { FormCheckComponent } from './components/form-check/form-check.component';
 import { FormInputComponent } from './components/form-input/form-input.component';
-import { TrackScrollDirective } from './directives/track-scroll';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import { TrackScrollDirective } from './directives/track-scroll';
     FormSelectComponent,
     FormCheckComponent,
     FormInputComponent,
-    TrackScrollDirective
   ],
   imports: [
     BrowserModule,
