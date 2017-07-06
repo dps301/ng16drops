@@ -21,7 +21,7 @@ export class FormComponent implements OnInit {
       $("a[rel='m_PageScroll2id']").mPageScroll2id({
         layout: "horizontal",
         forceSingleHighlight: true,
-        offset:"#id"
+        offset: "#id"
       });
     });
 
