@@ -41,11 +41,11 @@
     <ng-container *ngFor="let item of items; let i = index;">
       <ng-container *ngFor="let menu of item.items">
         <ng-container [ngSwitch]="menu.type">
-          <form-input [attr.id]="'s'+(i+1)" *ngSwitchCase="0">
+          <form-input [id]="'s'+(i+1)" [menu]="menu" *ngSwitchCase="0">
           </form-input>
-          <form-select [attr.id]="'s'+(i+1)" *ngSwitchCase="1">
+          <form-select [id]="'s'+(i+1)" [menu]="menu" *ngSwitchCase="1">
           </form-select>
-          <form-check [attr.id]="'s'+(i+1)" *ngSwitchCase="2">
+          <form-check [id]="'s'+(i+1)" [menu]="menu" *ngSwitchCase="2">
           </form-check>
         </ng-container>
       </ng-container>

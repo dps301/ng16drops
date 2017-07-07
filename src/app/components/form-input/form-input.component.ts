@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'form-input',
@@ -6,12 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-input.component.scss']
 })
 export class FormInputComponent implements OnInit {
-  title: string = "이름";
-  sub: string = "";
+  @Input() menu: any;
+  @Input() id: string;
 
   constructor() { }
 
   ngOnInit() {
   }
-
 }
