@@ -1,6 +1,25 @@
 <div class="container">
+  <ul>
+    <li *ngFor="let num of [1,2,3,4,5,6,7,8,9,10]"
+      [class.current]="id == 's'+ num "
+      (click)="scrollTo('#s'+num, '#v-scrollable')">{{num}}
+  </ul>
+  scrolled to: {{id}}
+  <!--<div id="v-scrollable" class="scrollable section"
+       ngui-scrollable (elementVisible)="id = $event.id">
+    <div id="s1">Section 1  (scroll to here)</div>
+    <div id="s2">Section 2  (scroll to here)</div>
+    <div id="s3">Section 3  (scroll to here)</div>
+    <div id="s4">Section 4  (scroll to here)</div>
+    <div id="s5">Section 5  (scroll to here)</div>
+    <div id="s6">Section 6  (scroll to here)</div>
+    <div id="s7">Section 7  (scroll to here)</div>
+    <div id="s8">Section 8  (scroll to here)</div>
+    <div id="s9">Section 9  (scroll to here)</div>
+    <div id="s10">Section 10  (scroll to here)</div>
+  </div>  -->
   <div class="header default-bg-color">
-    <a *ngFor="let item of items; let isFirst = first; let isLast = last; let idx = index;" rel="m_PageScroll2id" [attr.href]="'#s'+ (idx + 1)" class="title-item default-text-color none-active">
+    <a *ngFor="let item of items; let isFirst = first; let isLast = last; let idx = index;" [ngClass]="{'.mPS2id-highlight': id == 's' + (idx + 1)}" class="title-item default-text-color none-active" (click)="scrollTo('#s' + (idx + 1), '#v-scrollable')">
       <div class="nbsp">
         &nbsp;
       </div>
@@ -18,24 +37,19 @@
       </div>
     </a>
   </div>
-  <div class="form-content">
+  <div class="form-content scrollable section" id="v-scrollable" ngui-scrollable (elementVisible)="id = $event.id">
     <ng-container *ngFor="let item of items; let i = index;">
-      <ng-container *ngFor="let menu of item.menu">
+      <ng-container *ngFor="let menu of item.items">
         <ng-container [ngSwitch]="menu.type">
-          <form-input [id]="'s'+(i+1)" *ngSwitchCase="0">
+          <form-input [attr.id]="'s'+(i+1)" *ngSwitchCase="0">
           </form-input>
-          <form-select [id]="'s'+(i+1)" *ngSwitchCase="1">
+          <form-select [attr.id]="'s'+(i+1)" *ngSwitchCase="1">
           </form-select>
-          <form-check [id]="'s'+(i+1)" *ngSwitchCase="2">
+          <form-check [attr.id]="'s'+(i+1)" *ngSwitchCase="2">
           </form-check>
         </ng-container>
       </ng-container>
     </ng-container>
-    <!--<form-input id="s1"></form-input>
-    <form-check id="s2"></form-check>
-    <form-select id="s3"></form-select>
-    <form-select id="s4"></form-select>
-    <form-select id="s5"></form-select>-->
   </div>
   <div class="progress default-bg-color">
     <div class="bar default-progress-bg-color" [style.width]="objIdx / total * 100 + '%'">
