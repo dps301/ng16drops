@@ -9,9 +9,8 @@ declare var $: any;
   styleUrls: ['./form.component.scss'],
 })
 export class FormComponent implements OnInit {
-  items: any = [];
-  objIdx: number = 14;
-  total: number = 45;
+  items: Array<any> = [];
+  user: Array<any> = [];
   id: string = 's1';
   type: number = 0;
 
@@ -22,18 +21,9 @@ export class FormComponent implements OnInit {
     .subscribe(
       data => {
         console.log(data.json());
-        this.items = data.json();
-
-        // this.getTotal();
+        this.user = data.json().user;
+        this.items = data.json().items;
       }
     );
-  }
-
-  getTotal() {
-    var total = 0;
-
-    for(var i = 0; i < this.items.length; i++) {
-      this.total += this.items[i].items.length;
-    }
   }
 }
