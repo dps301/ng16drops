@@ -7,7 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FormInputComponent implements OnInit {
   @Input() menu: any;
-  @Input() id: string;
 
   constructor() { }
 

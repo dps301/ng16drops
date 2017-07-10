@@ -7,11 +7,29 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FormCheckComponent implements OnInit {
   @Input() menu: any;
-  @Input() id: string;
+  selectedItems: Array<any> = [];
 
-  constructor() { 
+  constructor() {
   }
 
   ngOnInit() {
+  }
+
+  addSelectedValue() {
+    this.selectedItems = [];
+
+    for(var i = 0; i < this.menu.items.length; i++) {
+      if(this.menu.items[i].checked == true) {
+        this.selectedItems.push({form_item_no: this.menu.formItemNo, no: this.menu.items[i].no})
+      }
+    }
+  }
+
+  getData() {
+    this.addSelectedValue();
+    
+    if(this.selectedItems.length == 0)
+      return false;
+    return this.selectedItems;
   }
 }

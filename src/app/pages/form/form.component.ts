@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { HttpService } from '../../services/http.service';
 import { NguiScrollableDirective } from '@ngui/scrollable';
 
@@ -10,11 +10,11 @@ declare var $: any;
   styleUrls: ['./form.component.scss'],
 })
 export class FormComponent implements OnInit {
-  items: Array<string> = [];
-  nowIdx: number = 1;
+  items: Array<any> = [];
   objIdx: number = 14;
-  total: number = 45;
+  total: number = 0;
   id: string = 's1';
+  type: number = 0;
 
   constructor(private http: HttpService) { }
 
@@ -24,6 +24,8 @@ export class FormComponent implements OnInit {
       data => {
         console.log(data.json());
         this.items = data.json();
+
+        this.getTotal();
       }
     );
   }
@@ -35,5 +37,13 @@ export class FormComponent implements OnInit {
       horizontal,     // is it horizontal scrolling
       0               // distance from top or left
     );
+  }
+
+  getTotal() {
+    var total = 0;
+
+    for(var i = 0; i < this.items.length; i++) {
+      this.total += this.items[i].items.length;
+    }
   }
 }
