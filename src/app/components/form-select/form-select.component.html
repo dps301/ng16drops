@@ -1,14 +1,12 @@
 <div class="container">
   <div class="title">
-    <span class="main">{{title}}</span><span class="sub">{{descript}}</span>
+    <span class="main">{{menu.title}}</span>
+    <!--<span class="sub">{{descript}}</span>-->
   </div>
   <div class="content">
-    <div class="form-item cursor" *ngFor="let item of formData; let i = index;" [ngClass]="{'checked': selectedIdx == i}" (click)="selectedIdx = i" >
+    <div class="form-item cursor" *ngFor="let item of menu.items;" [ngClass]="{'checked': item.no == no}" (click)="changeItemNo(item.no)" >
       {{item.content}}
-      <img *ngIf="selectedIdx == i" src="assets/images/check.png" alt="">
+      <img *ngIf="item.no == no" src="assets/images/check.png" alt="">
     </div>
-  </div>
-  <div class="btn-success cursor">
-    완료
   </div>
 </div>

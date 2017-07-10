@@ -26,7 +26,7 @@ import { FormInputComponent } from './components/form-input/form-input.component
     BrowserModule,
     FormsModule,
     HttpModule,
-    Routing,
+    Routing
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

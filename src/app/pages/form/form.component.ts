@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { HttpService } from '../../services/http.service';
 
 declare var $: any;
@@ -8,13 +8,14 @@ declare var $: any;
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
 })
-export class FormComponent implements OnInit, AfterViewInit {
-  items: Array<string> = [];
-  nowIdx: number = 1;
+export class FormComponent implements OnInit {
+  items: any = [];
   objIdx: number = 14;
   total: number = 45;
+  id: string = 's1';
+  type: number = 0;
 
-  constructor(private http: HttpService, private elementRef: ElementRef) { }
+  constructor(private http: HttpService) { }
 
   ngOnInit() {
     this.http.get('/items')
@@ -22,22 +23,17 @@ export class FormComponent implements OnInit, AfterViewInit {
       data => {
         console.log(data.json());
         this.items = data.json();
+
+        // this.getTotal();
       }
     );
   }
 
-  ngAfterViewInit() {
-    var s = document.createElement("script");
-    s.type = "text/javascript";
-    s.src="assets/js/jquery.malihu.PageScroll2id.min.js";
-    this.elementRef.nativeElement.appendChild(s);
+  getTotal() {
+    var total = 0;
 
-    $(window).on("load", () => {
-      $("a[rel='m_PageScroll2id']").mPageScroll2id({
-        layout: "horizontal",
-        forceSingleHighlight: true,
-        offset: "#id"
-      });
-    });
+    for(var i = 0; i < this.items.length; i++) {
+      this.total += this.items[i].items.length;
+    }
   }
 }

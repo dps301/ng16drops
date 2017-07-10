@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'form-check',
@@ -6,15 +6,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-check.component.scss']
 })
 export class FormCheckComponent implements OnInit {
-  title: string = "현재 쓰고있는 세안제를 목록 중에서 골라주세요";
-  descript: string = "중복 선택 가능합니다";
-  formData: Array<any> = [{content: '클렌징 폼'}, {content: '클렌징 로션'}, {content: '클렌징 오일'}, {content: '클렌징 젤'}, {content: '비누'}, {content: '없음'}];
+  @Input() menu: any;
+  selectedItems: Array<any> = [];
 
-  constructor() { 
-
+  constructor() {
   }
 
   ngOnInit() {
   }
 
+  addSelectedValue() {
+    this.selectedItems = [];
+
+    for(var i = 0; i < this.menu.items.length; i++) {
+      if(this.menu.items[i].checked == true) {
+        this.selectedItems.push({form_item_no: this.menu.formItemNo, no: this.menu.items[i].no})
+      }
+    }
+  }
+
+  getData() {
+    this.addSelectedValue();
+    
+    if(this.selectedItems.length == 0)
+      return false;
+    return this.selectedItems;
+  }
 }
