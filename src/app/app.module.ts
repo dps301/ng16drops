@@ -13,8 +13,6 @@ import { FormSelectComponent } from './components/form-select/form-select.compon
 import { FormCheckComponent } from './components/form-check/form-check.component';
 import { FormInputComponent } from './components/form-input/form-input.component';
 
- import { NguiScrollableModule } from '@ngui/scrollable';
- 
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,8 +26,7 @@ import { FormInputComponent } from './components/form-input/form-input.component
     BrowserModule,
     FormsModule,
     HttpModule,
-    Routing,
-    NguiScrollableModule
+    Routing
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

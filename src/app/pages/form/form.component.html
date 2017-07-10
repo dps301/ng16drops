@@ -1,19 +1,7 @@
 <div class="container">
-  <!--<div id="v-scrollable" class="scrollable section"
-       ngui-scrollable (elementVisible)="id = $event.id">
-    <div id="s1">Section 1  (scroll to here)</div>
-    <div id="s2">Section 2  (scroll to here)</div>
-    <div id="s3">Section 3  (scroll to here)</div>
-    <div id="s4">Section 4  (scroll to here)</div>
-    <div id="s5">Section 5  (scroll to here)</div>
-    <div id="s6">Section 6  (scroll to here)</div>
-    <div id="s7">Section 7  (scroll to here)</div>
-    <div id="s8">Section 8  (scroll to here)</div>
-    <div id="s9">Section 9  (scroll to here)</div>
-  </div>-->
   <div class="header default-bg-color">
     <ng-container *ngFor="let item of items.items; let isFirst = first; let isLast = last;" >
-      <div *ngIf="item.disp != 2 || (type == 0 && item.formGroupNo == 2) || (type == 1 && item.formGroupNo == 3)" [class.now]="id == 's' + (item.disp + 1)" class="title-item default-text-color none-active" (click)="scrollTo('#s' + (item.disp), '#v-scrollable')">
+      <div *ngIf="item.disp != 2 || (type == 0 && item.formGroupNo == 2) || (type == 1 && item.formGroupNo == 3)" [class.now]="id == 's' + (item.disp + 1)" class="title-item default-text-color none-active">
         <div class="nbsp">
           &nbsp;
         </div>
@@ -32,29 +20,29 @@
       </div>
     </ng-container>
   </div>
-  <div class="form-content scrollable section" id="v-scrollable" ngui-scrollable (elementVisible)="id = $event.id">
+  <div class="form-content">
     <ng-container *ngFor="let item of items.user; let i = index;">
       <ng-container [ngSwitch]="item.type">
-        <form-input #formInput [attr.id]="'s'+(i+1)" [menu]="item" *ngSwitchCase="0"></form-input>
-        <form-select #formSelect [attr.id]="'s'+(i+1)" [menu]="item" *ngSwitchCase="1"></form-select>
-        <form-check #formCheck [attr.id]="'s'+(i+1)" [menu]="item" *ngSwitchCase="2"></form-check>
+        <form-input #formInput [menu]="item" *ngSwitchCase="0"></form-input>
+        <form-select #formSelect [menu]="item" *ngSwitchCase="1"></form-select>
+        <form-check #formCheck [menu]="item" *ngSwitchCase="2"></form-check>
       </ng-container>
     </ng-container>
     <ng-container *ngFor="let item of items.items; let i = index;">
       <ng-container *ngFor="let menu of item.items">
         <ng-container [ngSwitch]="menu.type" *ngIf="item.disp != 2 || (type == 0 && item.formGroupNo == 2) || (type == 1 && item.formGroupNo == 3)">
-          <form-input #formInput [attr.id]="'s'+(i+1)" [menu]="menu" *ngSwitchCase="0"></form-input>
-          <form-select #formSelect [attr.id]="'s'+(i+1)" [trigger]="menu.trigger" [(type)]="type" [menu]="menu" *ngSwitchCase="1"></form-select>
-          <form-check #formCheck [attr.id]="'s'+(i+1)" [menu]="menu" *ngSwitchCase="2"></form-check>
+          <form-input #formInput [menu]="menu" *ngSwitchCase="0"></form-input>
+          <form-select #formSelect [trigger]="menu.trigger" [(type)]="type" [menu]="menu" *ngSwitchCase="1"></form-select>
+          <form-check #formCheck [menu]="menu" *ngSwitchCase="2"></form-check>
         </ng-container>
       </ng-container>
     </ng-container>
   </div>
-  <div class="progress default-bg-color">
+  <!--<div class="progress default-bg-color">
     <div class="bar default-progress-bg-color" [style.width]="objIdx / total * 100 + '%'">
       <div class="percent-container default-text-color">
         <span class="remain">{{objIdx}}</span><span class="total">&nbsp;/&nbsp;{{total}}</span>
       </div>
     </div>
-  </div>
+  </div>-->
 </div>

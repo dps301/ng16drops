@@ -1,6 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { HttpService } from '../../services/http.service';
-import { NguiScrollableDirective } from '@ngui/scrollable';
 
 declare var $: any;
 
@@ -10,9 +9,9 @@ declare var $: any;
   styleUrls: ['./form.component.scss'],
 })
 export class FormComponent implements OnInit {
-  items: Array<any> = [];
+  items: any = [];
   objIdx: number = 14;
-  total: number = 0;
+  total: number = 45;
   id: string = 's1';
   type: number = 0;
 
@@ -25,17 +24,8 @@ export class FormComponent implements OnInit {
         console.log(data.json());
         this.items = data.json();
 
-        this.getTotal();
+        // this.getTotal();
       }
-    );
-  }
-
-  scrollTo(selector, parentSelector, horizontal) {
-    NguiScrollableDirective.scrollTo(
-      selector,       // scroll to this
-      parentSelector, // scroll within (null if window scrolling)
-      horizontal,     // is it horizontal scrolling
-      0               // distance from top or left
     );
   }
 
