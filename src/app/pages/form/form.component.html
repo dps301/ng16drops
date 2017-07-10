@@ -1,6 +1,6 @@
 <div class="container">
   <div class="header default-bg-color">
-    <ng-container *ngFor="let item of items.items; let isFirst = first; let isLast = last;" >
+    <ng-container *ngFor="let item of items; let isFirst = first; let isLast = last;" >
       <div *ngIf="item.disp != 2 || (type == 0 && item.formGroupNo == 2) || (type == 1 && item.formGroupNo == 3)" [class.now]="id == 's' + (item.disp + 1)" class="title-item default-text-color none-active">
         <div class="nbsp">
           &nbsp;
@@ -21,19 +21,19 @@
     </ng-container>
   </div>
   <div class="form-content">
-    <ng-container *ngFor="let item of items.user; let i = index;">
+    <ng-container *ngFor="let item of user; let i = index;">
       <ng-container [ngSwitch]="item.type">
-        <form-input #formInput [menu]="item" *ngSwitchCase="0"></form-input>
-        <form-select #formSelect [menu]="item" *ngSwitchCase="1"></form-select>
-        <form-check #formCheck [menu]="item" *ngSwitchCase="2"></form-check>
+        <form-input [menu]="item" *ngSwitchCase="0"></form-input>
+        <form-select [menu]="item" *ngSwitchCase="1"></form-select>
+        <form-check [menu]="item" *ngSwitchCase="2"></form-check>
       </ng-container>
     </ng-container>
-    <ng-container *ngFor="let item of items.items; let i = index;">
+    <ng-container *ngFor="let item of items; let i = index;">
       <ng-container *ngFor="let menu of item.items">
         <ng-container [ngSwitch]="menu.type" *ngIf="item.disp != 2 || (type == 0 && item.formGroupNo == 2) || (type == 1 && item.formGroupNo == 3)">
-          <form-input #formInput [menu]="menu" *ngSwitchCase="0"></form-input>
-          <form-select #formSelect [trigger]="menu.trigger" [(type)]="type" [menu]="menu" *ngSwitchCase="1"></form-select>
-          <form-check #formCheck [menu]="menu" *ngSwitchCase="2"></form-check>
+          <form-input [menu]="menu" *ngSwitchCase="0"></form-input>
+          <form-select [trigger]="menu.trigger" [(type)]="type" [menu]="menu" *ngSwitchCase="1"></form-select>
+          <form-check [menu]="menu" *ngSwitchCase="2"></form-check>
         </ng-container>
       </ng-container>
     </ng-container>
