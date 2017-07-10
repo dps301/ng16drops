@@ -4,8 +4,7 @@
       [class.current]="id == 's'+ num "
       (click)="scrollTo('#s'+num, '#v-scrollable')">{{num}}
   </ul>
-  scrolled to: {{id}}
-  <!--<div id="v-scrollable" class="scrollable section"
+  <div id="v-scrollable" class="scrollable section"
        ngui-scrollable (elementVisible)="id = $event.id">
     <div id="s1">Section 1  (scroll to here)</div>
     <div id="s2">Section 2  (scroll to here)</div>
@@ -17,9 +16,9 @@
     <div id="s8">Section 8  (scroll to here)</div>
     <div id="s9">Section 9  (scroll to here)</div>
     <div id="s10">Section 10  (scroll to here)</div>
-  </div>  -->
+  </div>  
   <div class="header default-bg-color">
-    <a *ngFor="let item of items; let isFirst = first; let isLast = last; let idx = index;" [ngClass]="{'.mPS2id-highlight': id == 's' + (idx + 1)}" class="title-item default-text-color none-active" (click)="scrollTo('#s' + (idx + 1), '#v-scrollable')">
+    <div *ngFor="let item of items; let isFirst = first; let isLast = last; let idx = index;" [class.now]="id == 's' + (idx + 1)" class="title-item default-text-color none-active" (click)="scrollTo('#s' + (idx + 1), '#v-scrollable')">
       <div class="nbsp">
         &nbsp;
       </div>
@@ -35,7 +34,7 @@
       <div *ngIf="isLast" class="nbsp">
         &nbsp;
       </div>
-    </a>
+    </div>
   </div>
   <div class="form-content scrollable section" id="v-scrollable" ngui-scrollable (elementVisible)="id = $event.id">
     <ng-container *ngFor="let item of items; let i = index;">
