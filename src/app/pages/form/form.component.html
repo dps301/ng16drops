@@ -22,31 +22,31 @@
   </div>
   <div class="form-content">
     <div class="carousel">
-      <ul class="slides">
-        <li>
-
-        </li>
-        <li>
-          
-        </li>
-        <ng-container *ngFor="let item of user; let i = index;">
-          <ng-container [ngSwitch]="item.type">
-            <form-input [menu]="item" *ngSwitchCase="0"></form-input>
-            <form-select [menu]="item" *ngSwitchCase="1"></form-select>
-            <form-check [menu]="item" *ngSwitchCase="2"></form-check>
-          </ng-container>
-        </ng-container>
-        <ng-container *ngFor="let item of items; let i = index;">
-          <ng-container *ngFor="let menu of item.items">
-            <ng-container [ngSwitch]="menu.type" *ngIf="item.disp != 2 || (type == 0 && item.formGroupNo == 2) || (type == 1 && item.formGroupNo == 3)">
-              <form-input [menu]="menu" *ngSwitchCase="0"></form-input>
-              <form-select [trigger]="menu.trigger" [(type)]="type" [menu]="menu" *ngSwitchCase="1"></form-select>
-              <form-check [menu]="menu" *ngSwitchCase="2"></form-check>
-            </ng-container>
-          </ng-container>
-        </ng-container>
-      </ul>
+      <div class="step current">1</div>
+      <div class="step">2</div>
+      <div class="step">3</div>
+      <div class="step">4</div>
+      <div class="step">5</div>
+      <div class="step">6</div>  
     </div>
+    <button class="next">Next</button>
+
+    <!--<ng-container *ngFor="let item of user; let i = index;">
+      <ng-container [ngSwitch]="item.type">
+        <form-input [menu]="item" *ngSwitchCase="0"></form-input>
+        <form-select [menu]="item" *ngSwitchCase="1"></form-select>
+        <form-check [menu]="item" *ngSwitchCase="2"></form-check>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngFor="let item of items; let i = index;">
+      <ng-container *ngFor="let menu of item.items">
+        <ng-container [ngSwitch]="menu.type" *ngIf="item.disp != 2 || (type == 0 && item.formGroupNo == 2) || (type == 1 && item.formGroupNo == 3)">
+          <form-input [menu]="menu" *ngSwitchCase="0"></form-input>
+          <form-select [trigger]="menu.trigger" [(type)]="type" [menu]="menu" *ngSwitchCase="1"></form-select>
+          <form-check [menu]="menu" *ngSwitchCase="2"></form-check>
+        </ng-container>
+      </ng-container>
+    </ng-container>-->
   </div>
   <!--<div class="progress default-bg-color">
     <div class="bar default-progress-bg-color" [style.width]="objIdx / total * 100 + '%'">
