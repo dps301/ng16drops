@@ -2,7 +2,8 @@
     color: white;
 
     .title {
-        margin-bottom: 25px;
+        display: flex;
+        margin: 40px 0px;
 
         .main {
             font-size: 19px;
@@ -24,8 +25,13 @@
             flex-basis: 50%;
             color: white;
             border: none;
+            border-bottom: 1px solid white;
             background: transparent;
             padding: 5px;
+        }
+
+        input:focus {
+            outline: none;
         }
     }
     .btn-success {

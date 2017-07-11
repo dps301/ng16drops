@@ -32,5 +32,6 @@ export class FormSelectComponent implements OnInit {
     this.typeChange.emit(this.type);
 
     this.no = val;
+    console.log(this.no);
   }
 }

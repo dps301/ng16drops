@@ -1,13 +1,29 @@
 <div class="container">
   <div class="header default-bg-color">
-    <ng-container *ngFor="let item of items; let isFirst = first; let isLast = last;" >
-      <div *ngIf="item.disp != 2 || (type == 0 && item.formGroupNo == 2) || (type == 1 && item.formGroupNo == 3)" [class.now]="id == 's' + (item.disp + 1)" class="title-item default-text-color none-active">
+    <div [class.now]="now == 0" class="title-item default-text-color none-active" (click)="now = 0">
+      <div class="nbsp">
+        &nbsp;
+      </div>
+      <div class="title-text cursor">
+        <div class="index">
+          STEP.1
+        </div>
+        <div class="content">
+          기본정보     
+        </div>
+      </div>
+      <img src="assets/images/abovebar.png" alt="">
+        &nbsp;
+    </div>
+    <ng-container *ngFor="let item of items; let isFirst = first; let isLast = last; let i = index;" >
+      <!--<div *ngIf="item.disp != 2 || (type == 0 && item.formGroupNo == 2) || (type == 1 && item.formGroupNo == 3)" [class.now]="id == 's' + (item.disp + 1)" class="title-item default-text-color none-active">-->
+      <div [class.now]="now == (i + 1)" class="title-item default-text-color none-active" (click)="now = (i + 1)">
         <div class="nbsp">
           &nbsp;
         </div>
         <div class="title-text cursor">
           <div class="index">
-            STEP.{{item.disp}}
+            STEP.{{rNumber(item.disp) + 1}}
           </div>
           <div class="content">
             {{item.title}}     
@@ -21,32 +37,36 @@
     </ng-container>
   </div>
   <div class="form-content">
-    <div class="carousel">
-      <div class="step current">1</div>
-      <div class="step">2</div>
-      <div class="step">3</div>
-      <div class="step">4</div>
-      <div class="step">5</div>
-      <div class="step">6</div>  
+    <div class="next" >
+      <img [class.hidden]="now == 0" src="assets/images/button_left.png" alt="" (click)="move('-')">
     </div>
-    <button class="next">Next</button>
-
-    <!--<ng-container *ngFor="let item of user; let i = index;">
-      <ng-container [ngSwitch]="item.type">
-        <form-input [menu]="item" *ngSwitchCase="0"></form-input>
-        <form-select [menu]="item" *ngSwitchCase="1"></form-select>
-        <form-check [menu]="item" *ngSwitchCase="2"></form-check>
-      </ng-container>
-    </ng-container>
-    <ng-container *ngFor="let item of items; let i = index;">
-      <ng-container *ngFor="let menu of item.items">
-        <ng-container [ngSwitch]="menu.type" *ngIf="item.disp != 2 || (type == 0 && item.formGroupNo == 2) || (type == 1 && item.formGroupNo == 3)">
-          <form-input [menu]="menu" *ngSwitchCase="0"></form-input>
-          <form-select [trigger]="menu.trigger" [(type)]="type" [menu]="menu" *ngSwitchCase="1"></form-select>
-          <form-check [menu]="menu" *ngSwitchCase="2"></form-check>
-        </ng-container>
-      </ng-container>
-    </ng-container>-->
+    <div class="carousel">
+      <div class="step" [ngClass]="{'current': now == 0}">
+        <div class="content-sizer">
+          <ng-container *ngFor="let item of user; let i = index;">
+            <ng-container [ngSwitch]="item.type">
+              <form-input [menu]="item" *ngSwitchCase="0"></form-input>
+              <form-select [menu]="item" *ngSwitchCase="1"></form-select>
+              <form-check [menu]="item" *ngSwitchCase="2"></form-check>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+      <div class="step" [ngClass]="{'current': now == (i + 1)}" *ngFor="let item of items; let i = index;">
+        <div class="content-sizer">
+          <ng-container *ngFor="let menu of item.items">
+            <ng-container [ngSwitch]="menu.type">
+              <form-input [menu]="menu" *ngSwitchCase="0"></form-input>
+              <form-select [trigger]="menu.trigger" [(type)]="type" [menu]="menu" *ngSwitchCase="1"></form-select>
+              <form-check [menu]="menu" *ngSwitchCase="2"></form-check>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="next">
+      <img [class.hidden]="now == total" src="assets/images/button_right.png" (click)="move('+')">
+    </div>
   </div>
   <!--<div class="progress default-bg-color">
     <div class="bar default-progress-bg-color" [style.width]="objIdx / total * 100 + '%'">

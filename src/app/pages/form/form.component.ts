@@ -11,7 +11,8 @@ declare var $: any;
 export class FormComponent implements OnInit {
   items: Array<any> = [];
   user: Array<any> = [];
-  id: string = 's1';
+  now: number = 0;
+  total: number = 0;
   type: number = 0;
 
   constructor(private http: HttpService) { }
@@ -23,7 +24,19 @@ export class FormComponent implements OnInit {
         console.log(data.json());
         this.user = data.json().user;
         this.items = data.json().items;
+        this.total = this.items.length;
       }
     );
+  }
+
+  move(val) {
+    if(val == '+' && this.now < this.total)
+      this.now++;
+    else if(val == '-' && this.now > 0)
+      this.now--;
+  }
+
+  rNumber(val: number) {
+    return Number(val);
   }
 }
