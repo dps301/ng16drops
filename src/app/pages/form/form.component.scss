@@ -143,4 +143,17 @@
     .not-now {
         opacity: 0.4;
     }
+
+    .btn-success {
+        color: white;
+        margin-top: 20px;
+        border: 1px solid white;
+        border-radius: 5px;
+        display: inline-block;
+        padding: 8px 11px;
+        font-size: 16px;
+    }
+    .btn-success:hover {
+        background: rgba(255, 255, 255, 0.4);
+    }
 }

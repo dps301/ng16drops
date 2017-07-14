@@ -15,7 +15,7 @@
       <img src="assets/images/abovebar.png" alt="">
         &nbsp;
     </div>
-    <ng-container *ngFor="let item of items; let isFirst = first; let isLast = last; let i = index;" >
+    <ng-container *ngFor="let item of showedItems; let isFirst = first; let isLast = last; let i = index;" >
       <!--<div *ngIf="item.disp != 2 || (type == 0 && item.formGroupNo == 2) || (type == 1 && item.formGroupNo == 3)" [class.now]="id == 's' + (item.disp + 1)" class="title-item default-text-color none-active">-->
       <div [class.now]="now == (i + 1)" class="title-item default-text-color none-active" (click)="now = (i + 1)">
         <div class="nbsp">
@@ -45,22 +45,25 @@
         <div class="content-sizer">
           <ng-container *ngFor="let item of user; let i = index;">
             <ng-container [ngSwitch]="item.type">
-              <form-input [menu]="item" *ngSwitchCase="0"></form-input>
-              <form-select [menu]="item" *ngSwitchCase="1"></form-select>
-              <form-check [menu]="item" *ngSwitchCase="2"></form-check>
+              <form-input [menu]="item" *ngSwitchCase="0" (addAnswer)="addAnswer($event)" [arr]="'user'"></form-input>
+              <form-select [menu]="item" *ngSwitchCase="1" (addAnswer)="addAnswer($event)" [arr]="'user'"></form-select>
+              <form-check [menu]="item" *ngSwitchCase="2" (addAnswer)="addAnswer($event)" [arr]="'user'"></form-check>
             </ng-container>
           </ng-container>
         </div>
       </div>
-      <div class="step" [ngClass]="{'current': now == (i + 1)}" *ngFor="let item of items; let i = index;">
+      <div class="step" [ngClass]="{'current': now == (i + 1)}" *ngFor="let item of showedItems; let i = index;">
         <div class="content-sizer">
-          <ng-container *ngFor="let menu of item.items">
+          <ng-container *ngFor="let menu of item.items;">
             <ng-container [ngSwitch]="menu.type">
-              <form-input [menu]="menu" *ngSwitchCase="0"></form-input>
-              <form-select [trigger]="menu.trigger" [(type)]="type" [menu]="menu" *ngSwitchCase="1"></form-select>
-              <form-check [menu]="menu" *ngSwitchCase="2"></form-check>
+              <form-input [menu]="menu" *ngSwitchCase="0" (addAnswer)="addAnswer($event)" [arr]="'item'"></form-input>
+              <form-select [trigger]="menu.trigger" (changeType)="changeType($event)" [menu]="menu" *ngSwitchCase="1" (addAnswer)="addAnswer($event)" [arr]="'item'"></form-select>
+              <form-check [menu]="menu" *ngSwitchCase="2" (addAnswer)="addAnswer($event)" [arr]="'item'"></form-check>
             </ng-container>
           </ng-container>
+          <div class="btn-success cursor" (click)="submit()">
+            제출
+          </div>
         </div>
       </div>
     </div>

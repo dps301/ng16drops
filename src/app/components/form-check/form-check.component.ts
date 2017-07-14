@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'form-check',
@@ -7,6 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FormCheckComponent implements OnInit {
   @Input() menu: any;
+  @Input() arr: number;
+  @Output() addAnswer: EventEmitter<any> = new EventEmitter();
+
   selectedItems: Array<any> = [];
 
   constructor() {
@@ -23,13 +26,13 @@ export class FormCheckComponent implements OnInit {
         this.selectedItems.push({form_item_no: this.menu.formItemNo, no: this.menu.items[i].no})
       }
     }
+
+    this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr});
   }
 
   getData() {
-    this.addSelectedValue();
-    
     if(this.selectedItems.length == 0)
-      return false;
+      return null;
     return this.selectedItems;
   }
 }

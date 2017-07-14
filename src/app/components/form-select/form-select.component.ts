@@ -9,7 +9,9 @@ export class FormSelectComponent implements OnInit {
   @Input() menu: any;
   @Input() type: number;
   @Input() trigger: number;
-  @Output() typeChange: EventEmitter<number> = new EventEmitter<number>();
+  @Input() arr: number;
+  @Output() changeType: EventEmitter<any> = new EventEmitter();
+  @Output() addAnswer: EventEmitter<any> = new EventEmitter();
 
   no: number = -1;
 
@@ -20,17 +22,22 @@ export class FormSelectComponent implements OnInit {
 
   getData() {
     if(this.no == -1)
-      return false;
+      return null;
     return {form_item_no: this.menu.formItemNo, no: this.no};
   }
 
   changeItemNo(val) {
-    if(this.trigger == 1 && this.no == 136)
+    if(this.trigger == 1 && this.no == 136) {
       this.type = 1;
-    else if(this.trigger == 1 && this.no != 136)
+      this.changeType.next(this.type);
+    }
+    else if(this.trigger == 1 && this.no != 136) {
       this.type = 0;
-    this.typeChange.emit(this.type);
+      this.changeType.next(this.type);
+    }
 
     this.no = val;
+
+    this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr});
   }
 }
