@@ -35,11 +35,14 @@ export class FormComponent implements OnInit {
         this.items = data.json().items;
         this.showedItems = this.items.map(x => Object.assign({}, x));
         this.showedItems.splice(2, 1);
+        // console.log(this.showedItems);
       }
     );
   }
 
   move(val) {
+    if((this.now == 0 && val == '-')||(this.now == this.showedItems.length && val == '+'))
+      return ;
     if(val == '+' && this.now < this.total)
       this.now++;
     else if(val == '-' && this.now > 0)
@@ -53,11 +56,11 @@ export class FormComponent implements OnInit {
   addAnswer(value) {
     if(value.arr == 'user') {
       this.userInfo[value.index] = value.item;
-      console.log(this.userInfo);
+      // console.log(this.userInfo);
     }
     else {
       this.answers[value.index] = value.item;
-      console.log(this.answers);
+      // console.log(this.answers);
     }
   }
 
@@ -73,6 +76,7 @@ export class FormComponent implements OnInit {
   }
 
   submit() {
-    
+    console.log(this.userInfo);
+    console.log(this.answers);
   }
 }

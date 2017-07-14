@@ -52,7 +52,7 @@
           </ng-container>
         </div>
       </div>
-      <div class="step" [ngClass]="{'current': now == (i + 1)}" *ngFor="let item of showedItems; let i = index;">
+      <div class="step" [ngClass]="{'current': now == (i + 1)}" *ngFor="let item of showedItems; let i = index; let isLast = last">
         <div class="content-sizer">
           <ng-container *ngFor="let menu of item.items;">
             <ng-container [ngSwitch]="menu.type">
@@ -61,14 +61,14 @@
               <form-check [menu]="menu" *ngSwitchCase="2" (addAnswer)="addAnswer($event)" [arr]="'item'"></form-check>
             </ng-container>
           </ng-container>
-          <div class="btn-success cursor" (click)="submit()">
+          <div *ngIf="isLast" class="btn-success cursor" (click)="submit()">
             제출
           </div>
         </div>
       </div>
     </div>
     <div class="next">
-      <img [class.hidden]="now == total" src="assets/images/button_right.png" (click)="move('+')">
+      <img [class.hidden]="now == showedItems.length" src="assets/images/button_right.png" (click)="move('+')">
     </div>
   </div>
   <!--<div class="progress default-bg-color">
