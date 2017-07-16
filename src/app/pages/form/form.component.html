@@ -16,14 +16,13 @@
         &nbsp;
     </div>
     <ng-container *ngFor="let item of showedItems; let isFirst = first; let isLast = last; let i = index;" >
-      <!--<div *ngIf="item.disp != 2 || (type == 0 && item.formGroupNo == 2) || (type == 1 && item.formGroupNo == 3)" [class.now]="id == 's' + (item.disp + 1)" class="title-item default-text-color none-active">-->
       <div [class.now]="now == (i + 1)" class="title-item default-text-color none-active" (click)="now = (i + 1)">
         <div class="nbsp">
           &nbsp;
         </div>
         <div class="title-text cursor">
           <div class="index">
-            STEP.{{rNumber(item.disp) + 1}}
+            STEP.{{i + 2}}
           </div>
           <div class="content">
             {{item.title}}     
@@ -57,8 +56,8 @@
           <ng-container *ngFor="let menu of item.items;">
             <ng-container [ngSwitch]="menu.type">
               <form-input [menu]="menu" *ngSwitchCase="0" (addAnswer)="addAnswer($event)" [arr]="'item'"></form-input>
-              <form-select [trigger]="menu.trigger" (changeType)="changeType($event)" [menu]="menu" *ngSwitchCase="1" (addAnswer)="addAnswer($event)" [arr]="'item'"></form-select>
-              <form-check [menu]="menu" *ngSwitchCase="2" (addAnswer)="addAnswer($event)" [arr]="'item'"></form-check>
+              <form-select [menu]="menu" *ngSwitchCase="1" (addAnswer)="addAnswer($event)" [arr]="'item'"></form-select>
+              <form-check [menu]="menu" *ngSwitchCase="2" (addAnswer)="addAnswer($event)" [arr]="'item'" [limit]="menu.limit"></form-check>
             </ng-container>
           </ng-container>
           <div *ngIf="isLast" class="btn-success cursor" (click)="submit()">

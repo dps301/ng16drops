@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class FormCheckComponent implements OnInit {
   @Input() menu: any;
   @Input() arr: number;
+  @Input() limit: number;
   @Output() addAnswer: EventEmitter<any> = new EventEmitter();
 
   selectedItems: Array<any> = [];
@@ -16,9 +17,25 @@ export class FormCheckComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(this.limit == 0) {
+      this.limit = 9999;
+    }
+    else {
+      if(!this.menu.descript)
+        this.menu.descript = "";
+      this.menu.descript += "(최대"+this.limit+"개)";
+    }
+    this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title});
   }
 
-  addSelectedValue() {
+  addSelectedValue(item) {
+    item.checked = (item.checked == 1? 0: 1);
+
+    if(this.selectedItems.length == this.limit && item.checked == 1) {
+      item.checked = 0;
+      return ;
+    }
+
     this.selectedItems = [];
 
     for(var i = 0; i < this.menu.items.length; i++) {
@@ -32,7 +49,7 @@ export class FormCheckComponent implements OnInit {
 
   getData() {
     if(this.selectedItems.length == 0)
-      return null;
+      return {};
     return this.selectedItems;
   }
 }

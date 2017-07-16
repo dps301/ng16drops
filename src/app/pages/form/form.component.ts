@@ -18,7 +18,6 @@ export class FormComponent implements OnInit {
   total: number = 0;
   itemsTotal: number = 0;
   userTotal: number = 0;
-  type: number = 0;
 
   constructor(private http: HttpService, private cdRef: ChangeDetectorRef) { }
 
@@ -64,21 +63,7 @@ export class FormComponent implements OnInit {
     }
   }
 
-  changeType(value) {
-    this.type = value;
-
-    if(this.type == 1) {
-      this.showedItems[1] = this.items[2];
-    }
-    else {
-      this.showedItems[1] = this.items[1];
-    }
-  }
-
   submit() {
-    console.log(this.userInfo);
-    console.log(this.answers);
-
     var userArr = [];
     for (var prop in this.userInfo) {
         userArr.push(this.userInfo[prop]);
@@ -92,7 +77,6 @@ export class FormComponent implements OnInit {
     this.http.post('/log', {'user': userArr, 'items': itemsArr})
     .subscribe(
       data => {
-        console.log(data);
         
       }
     );

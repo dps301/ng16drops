@@ -15,11 +15,12 @@ export class FormInputComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title});
   }
 
   getData() {
     if(this.inputVal.length < 1)
-      return null;
+      return {};
     return {form_item_no: this.menu.formItemNo, answer: this.inputVal, title: this.menu.title};
   }
 
