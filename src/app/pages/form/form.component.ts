@@ -56,11 +56,11 @@ export class FormComponent implements OnInit {
   addAnswer(value) {
     if(value.arr == 'user') {
       this.userInfo[value.index] = value.item;
-      // console.log(this.userInfo);
+      this.userInfo[value.index].title = value.title;
     }
     else {
       this.answers[value.index] = value.item;
-      // console.log(this.answers);
+      this.answers[value.index].title = value.title;
     }
   }
 
@@ -78,5 +78,23 @@ export class FormComponent implements OnInit {
   submit() {
     console.log(this.userInfo);
     console.log(this.answers);
+
+    var userArr = [];
+    for (var prop in this.userInfo) {
+        userArr.push(this.userInfo[prop]);
+    }
+    
+    var itemsArr = [];
+    for (var prop in this.answers) {
+        itemsArr.push(this.answers[prop]);
+    }
+    console.log({'user': userArr, 'items': itemsArr});
+    this.http.post('/log', {'user': userArr, 'items': itemsArr})
+    .subscribe(
+      data => {
+        console.log(data);
+        
+      }
+    );
   }
 }

@@ -6,11 +6,11 @@
         margin: 40px 0px;
         
         .main {
-            font-size: 21px;
+            font-size: 1.6rem;
 
         }
         .sub {
-            font-size: 13px;
+            font-size: 1.3rem;
             margin-left: 10px;
             opacity: 0.7;
         }
@@ -29,7 +29,7 @@
             padding: 9px 10px;
             margin: 7px;
             margin-left: 0px;
-            font-size: 17px;
+            font-size: 1.4rem;
 
             img {
                 height: 17px;
@@ -41,16 +41,5 @@
          .form-item.checked {
             box-shadow: 0px 0px 0px 2px white inset;
          }
-    }
-    .btn-success {
-        margin-top: 20px;
-        border: 1px solid white;
-        border-radius: 5px;
-        display: inline-block;
-        padding: 7px 10px;
-        font-size: 14px;
-    }
-    .btn-success:hover {
-        background: rgba(255, 255, 255, 0.4);
     }
 }

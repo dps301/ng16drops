@@ -58,6 +58,7 @@
         min-height: 80px;
         background-image: linear-gradient(0deg, #C5BED3 0%, #74AAD8 100%);
         overflow-y: scroll;
+        -ms-overflow-style: none;
 
         display: flex;
         flex-direction: row;
@@ -151,7 +152,7 @@
         border-radius: 5px;
         display: inline-block;
         padding: 8px 11px;
-        font-size: 16px;
+        font-size: 1.5rem;
     }
     .btn-success:hover {
         background: rgba(255, 255, 255, 0.4);

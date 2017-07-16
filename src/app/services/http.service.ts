@@ -5,7 +5,7 @@ import { Observable } from "rxjs/Observable";
 @Injectable()
 export class HttpService {
     constructor(private http: Http) { }
-    public server_addr = 'http://api.bluelab.me:3000';
+    public server_addr = 'http://api.bluelab.me:5000';
 
     headers = new Headers({ 'Content-Type': 'application/json' });
     options = new RequestOptions({ headers: this.headers });

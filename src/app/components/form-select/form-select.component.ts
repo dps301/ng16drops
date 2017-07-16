@@ -37,7 +37,7 @@ export class FormSelectComponent implements OnInit {
     }
 
     this.no = val;
-
-    this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr});
+        
+    this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title});
   }
 }

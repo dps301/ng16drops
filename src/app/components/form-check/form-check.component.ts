@@ -27,7 +27,7 @@ export class FormCheckComponent implements OnInit {
       }
     }
 
-    this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr});
+    this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title});
   }
 
   getData() {
