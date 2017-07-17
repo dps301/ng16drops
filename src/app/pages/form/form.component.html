@@ -15,7 +15,7 @@
       <img src="assets/images/abovebar.png" alt="">
         &nbsp;
     </div>
-    <ng-container *ngFor="let item of showedItems; let isFirst = first; let isLast = last; let i = index;" >
+    <ng-container *ngFor="let item of items; let isFirst = first; let isLast = last; let i = index;" >
       <div [class.now]="now == (i + 1)" class="title-item default-text-color none-active" (click)="now = (i + 1)">
         <div class="nbsp">
           &nbsp;
@@ -51,7 +51,7 @@
           </ng-container>
         </div>
       </div>
-      <div class="step" [ngClass]="{'current': now == (i + 1)}" *ngFor="let item of showedItems; let i = index; let isLast = last">
+      <div class="step" [ngClass]="{'current': now == (i + 1)}" *ngFor="let item of items; let i = index; let isLast = last">
         <div class="content-sizer">
           <ng-container *ngFor="let menu of item.items;">
             <ng-container [ngSwitch]="menu.type">
@@ -67,14 +67,7 @@
       </div>
     </div>
     <div class="next">
-      <img [class.hidden]="now == showedItems.length" src="assets/images/button_right.png" (click)="move('+')">
+      <img [class.hidden]="now == items.length" src="assets/images/button_right.png" (click)="move('+')">
     </div>
   </div>
-  <!--<div class="progress default-bg-color">
-    <div class="bar default-progress-bg-color" [style.width]="objIdx / total * 100 + '%'">
-      <div class="percent-container default-text-color">
-        <span class="remain">{{objIdx}}</span><span class="total">&nbsp;/&nbsp;{{total}}</span>
-      </div>
-    </div>
-  </div>-->
 </div>

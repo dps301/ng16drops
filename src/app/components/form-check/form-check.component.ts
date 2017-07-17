@@ -49,7 +49,7 @@ export class FormCheckComponent implements OnInit {
 
   getData() {
     if(this.selectedItems.length == 0)
-      return {};
+      return {form_item_no: null};
     return this.selectedItems;
   }
 }

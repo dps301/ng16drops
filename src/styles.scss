@@ -9,11 +9,22 @@ html, body {
     height: 100%;
     font-family: 'KoPub';
     overflow-x: hidden;
+    word-break: keep-all;
 }
 
 @media only screen and (max-width: 1280px) {
-   body { 
+   body, html { 
        font-size: 14px;
+    }
+}
+@media only screen and (max-width: 1024px) {
+   body, html { 
+       font-size: 13px;
+    }
+}
+@media only screen and (max-width: 767px) {
+   body, html { 
+       font-size: 11px;
     }
 }
 

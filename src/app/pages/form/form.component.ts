@@ -10,7 +10,6 @@ declare var $: any;
 })
 export class FormComponent implements OnInit {
   items: Array<any> = [];
-  showedItems: Array<any> = [];
   userInfo: any = {};
   answers: any = {};
   user: Array<any> = [];
@@ -32,24 +31,17 @@ export class FormComponent implements OnInit {
         
         this.user = data.json().user;
         this.items = data.json().items;
-        this.showedItems = this.items.map(x => Object.assign({}, x));
-        this.showedItems.splice(2, 1);
-        // console.log(this.showedItems);
       }
     );
   }
 
   move(val) {
-    if((this.now == 0 && val == '-')||(this.now == this.showedItems.length && val == '+'))
+    if((this.now == 0 && val == '-')||(this.now == this.items.length && val == '+'))
       return ;
-    if(val == '+' && this.now < this.total)
+    if(val == '+')
       this.now++;
-    else if(val == '-' && this.now > 0)
+    else if(val == '-')
       this.now--;
-  }
-
-  rNumber(val: number) {
-    return Number(val);
   }
 
   addAnswer(value) {
@@ -66,15 +58,31 @@ export class FormComponent implements OnInit {
   submit() {
     var userArr = [];
     for (var prop in this.userInfo) {
-        userArr.push(this.userInfo[prop]);
+      userArr.push(this.userInfo[prop]);
     }
-    
+
     var itemsArr = [];
     for (var prop in this.answers) {
-        itemsArr.push(this.answers[prop]);
+      itemsArr.push(this.answers[prop]);
     }
+
     console.log({'user': userArr, 'items': itemsArr});
-    this.http.post('/log', {'user': userArr, 'items': itemsArr})
+    
+    for(var i = 0; i < userArr.length; i++) {
+      if(!userArr[i].form_item_no) {
+        alert(userArr[i].title + ' 항목을 확인해주세요.');
+        return ;
+      }
+    }
+
+    for(var i = 0; i < itemsArr.length; i++) {
+      if(!itemsArr[i].form_item_no) {
+        alert(itemsArr[i].title + ' 항목을 확인해주세요.');
+        return ;
+      }
+    }
+
+    this.http.post('/items', {'user': userArr, 'items': itemsArr})
     .subscribe(
       data => {
         
