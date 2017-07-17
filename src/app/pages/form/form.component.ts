@@ -1,8 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { HttpService } from '../../services/http.service';
 
-declare var $: any;
-
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',

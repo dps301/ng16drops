@@ -1,7 +1,7 @@
 <div class="container">
   <div class="title">
     <span class="main">{{menu.title}}</span>
-    <!--<span class="sub">{{descript}}</span>-->
+    <span class="sub" *ngIf="menu.descript">{{menu.descript}}</span>
   </div>
   <div class="content">
     <input type="" name="" value="" [(ngModel)]="inputVal" (ngModelChange)="inputChange()">

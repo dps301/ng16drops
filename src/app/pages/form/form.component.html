@@ -1,9 +1,6 @@
 <div class="container">
   <div class="header default-bg-color">
-    <div [class.now]="now == 0" class="title-item default-text-color none-active" (click)="now = 0">
-      <div class="nbsp">
-        &nbsp;
-      </div>
+    <!-- <div [class.now]="now == 0" class="title-item default-text-color none-active" (click)="now = 0">
       <div class="title-text cursor">
         <div class="index">
           STEP.1
@@ -13,13 +10,11 @@
         </div>
       </div>
       <img src="assets/images/abovebar.png" alt="">
-        &nbsp;
-    </div>
+    </div> -->
+
+
     <ng-container *ngFor="let item of items; let isFirst = first; let isLast = last; let i = index;" >
       <div [class.now]="now == (i + 1)" class="title-item default-text-color none-active" (click)="now = (i + 1)">
-        <div class="nbsp">
-          &nbsp;
-        </div>
         <div class="title-text cursor">
           <div class="index">
             STEP.{{i + 2}}
@@ -29,11 +24,10 @@
           </div>
         </div>
         <img *ngIf="!isLast" src="assets/images/abovebar.png" alt="">
-        <div *ngIf="isLast" class="nbsp">
-          &nbsp;
-        </div>
       </div>
     </ng-container>
+
+    
   </div>
   <div class="form-content">
     <div class="next" >

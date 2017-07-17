@@ -1,7 +1,7 @@
 <div class="container">
   <div class="title">
     <span class="main">{{menu.title}}</span>
-    <span class="sub">{{menu.descript}}</span>
+    <span class="sub" *ngIf="menu.descript">{{menu.descript}}</span>
   </div>
   <div class="content">
     <div class="form-item cursor" *ngFor="let item of menu.items" [ngClass]="{'checked': item.checked == 1}" (click)="addSelectedValue(item);" >
