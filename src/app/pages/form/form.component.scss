@@ -6,49 +6,79 @@
     .header {
         position: relative;
         z-index: 1;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
         padding: 24px 50px;
+        @media only screen and (max-width: 767px) {
+            padding: 24px 0px;
+        }
         box-shadow: 0px 10px 100px 10px rgba(0, 0, 0, 0.2);
 
-        .title-item {
-            text-decoration: none;
-            cursor: default;
+        .desktop {
             display: flex;
-            flex: 1;
+            @media only screen and (max-width: 767px) {
+                display: none;
+            }
             flex-direction: row;
             align-items: center;
-            justify-content: space-between;
-            
-            .nbsp {
-                width: 23px;
-            }
 
-            .title-text {
+            .title-item {
+                text-decoration: none;
+                cursor: default;
                 display: flex;
-                flex-direction: column;
-
-                .index {
-                    font-size: 1.3rem;
-                    margin-bottom: 1px;
-                    font-weight: 600;
+                flex: 1;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                
+                .nbsp {
+                    width: 23px;
                 }
-                .content {
-                    margin-top: 1px;
-                    font-size: 1.3rem;
-                    font-weight: 600;
+
+                .title-text {
+                    display: flex;
+                    flex-direction: column;
+
+                    .index {
+                        font-size: 1.3rem;
+                        margin-bottom: 1px;
+                        font-weight: 600;
+                    }
+                    .content {
+                        margin-top: 1px;
+                        font-size: 1.3rem;
+                        font-weight: 600;
+                    }
                 }
             }
-
             img {
                 height: 23px;
                 width: auto;
                 opacity: 0.4;
             }
+            .now{ 
+                color: rgba(99, 176, 219, 1.0) !important;
+            }
         }
-        .now{ 
-            color: rgba(99, 176, 219, 1.0) !important;
+
+        .mobile {
+            display: none;
+            flex-direction: row;
+            justify-content: space-around;
+            overflow-x: scroll;
+
+            @media only screen and (max-width: 767px) {
+                display: flex;
+            }
+
+            .title {
+                margin: 0px 10px;
+                font-size: 1.3rem;
+                margin-bottom: 1px;
+                font-weight: 600;
+            }
+
+            .now {
+                color: rgba(99, 176, 219, 1.0) !important;
+            }
         }
     }
 
@@ -72,19 +102,12 @@
             display: flex;
             overflow: hidden;
             overflow-y: scroll;
-            @media only screen and (max-width: 767px) {
-                flex-direction: column;
-            }
             flex-grow: 1;
             margin-bottom: 50px;
             flex: 2;
             
             .step {
                 flex: 0;
-                @media only screen and (max-width: 767px) {
-                    flex: 1;
-                    overflow: unset;
-                }
                 font-size: 10em;
                 overflow-x: hidden;
                 overflow-y: scroll;
@@ -139,30 +162,6 @@
         }
     }
 
-    .progress {
-        position: relative;
-        height: 30px;
-        z-index: 1;
-
-        .bar {
-            float: left;
-            max-width: 100%;
-            height: inherit;
-            
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-
-            .percent-container {
-                transform: translateX(50%);
-
-                .remain {
-                    color: white !important;
-                }
-            }
-        }
-    }
-
     .not-now {
         opacity: 0.4;
     }
@@ -175,8 +174,36 @@
         display: inline-block;
         padding: 8px 11px;
         font-size: 1.5rem;
+
+        @media only screen and (max-width: 767px) {
+            display: block;
+            margin: 40px auto;
+            text-align: center;
+        }
     }
     .btn-success:hover {
         background: rgba(255, 255, 255, 0.4);
+    }
+
+    .side-button {
+        display: none;
+        position: absolute;
+        z-index: 3;
+        bottom: 5%;
+        
+        @media only screen and (max-width: 767px) {
+            display: block;
+        }
+
+        img {
+            width: 70px;
+        }
+
+        &.left {
+            left: 5%;
+        }
+        &.right {
+            right: 5%;
+        }
     }
 }

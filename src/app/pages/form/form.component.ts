@@ -34,7 +34,7 @@ export class FormComponent implements OnInit {
   }
 
   move(val) {
-    if((this.now == 0 && val == '-')||(this.now == this.items.length && val == '+'))
+    if((this.now == 0 && val == '-') || (this.now == this.items.length && val == '+'))
       return ;
     if(val == '+')
       this.now++;
