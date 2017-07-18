@@ -45,7 +45,17 @@
         <img src="assets/images/check_for_title.png" alt="">내 피부에 맞는 성분
       </div>
       <div class="recommend-content">
-        4
+        <div class="card" *ngFor="let item of cards">
+          <div class="img-container">
+            <img [src]="item.image" alt="">
+            <div class="img-text">
+              가자가자
+            </div>
+          </div>
+          <div class="text-container">
+            {{item.content}}
+          </div>
+        </div>
       </div>
     </div>
   </div>

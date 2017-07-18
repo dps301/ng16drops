@@ -73,8 +73,43 @@
         .step3 {
 
         }
-        .recomment {
+        .recommend {
+            .recommend-content {
+                display: flex;
+                flex-direction: row;
+                margin: 0px 25px;
 
+                .card {
+                    margin: 10px;
+
+                    .img-container {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        background: grey;
+                        height: 200px;
+
+                        img {
+                            height: 80px;
+                        }
+                        .img-text {
+                            color: white;
+                            font-size: 1.3rem;
+                            margin: 10px 0px;
+                        }
+                    }
+                    .text-container {
+                        display: flex;
+                        word-break: break-all;
+                        height: 150px;
+                        width: auto;
+                        background: #98c9ec;
+                        color: white;
+                        padding: 10px;
+                    }
+                }
+            }
         }
     }
 }
