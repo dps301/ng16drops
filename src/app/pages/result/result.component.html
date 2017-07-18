@@ -1,22 +1,52 @@
-<div class="header">
-  <div class="logo">
-    logo
+<div class="background result-default-bg-color">
+  <div class="container">
+    <div class="welcome">
+      1
+    </div>
+    <div class="graph">
+      <div class="title">
+        <img src="assets/images/check_for_title.png" alt="">당신의 피부 타입
+      </div>
+      <div class="graph-content">
+        <div class="type-name">
+          <span>데자뷰형</span>
+        </div>
+        <div class="graph-container">
+          <div class="bar-graph">
+            <div class="item" *ngFor="let item of barLabel; let idx = index">
+              <div class="item-title">
+                {{item}}
+              </div>
+              <div class="progress-container">
+                <div class="progress" [ngStyle]="{'width': barAmt[idx]+'%'}">
+                </div>
+              </div>
+              <div class="item-title">
+                {{barAmt[idx]}}
+              </div>
+            </div>
+          </div>
+          <div class="radar">
+            <chart [type]="type" [data]="data" [options]="options"></chart>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step3">
+      <div class="title">
+        <img src="assets/images/check_for_title.png" alt="">주요 관리 방법
+      </div>
+      <div class="step3-content">
+        3
+      </div>
+    </div>
+    <div class="recommend">
+      <div class="title">
+        <img src="assets/images/check_for_title.png" alt="">내 피부에 맞는 성분
+      </div>
+      <div class="recommend-content">
+        4
+      </div>
+    </div>
   </div>
-  <div class="menus">
-    <div class="item">
-      당신의 피부 타입은?
-    </div>
-    <div class="item">
-      주요 피부 지표
-    </div>
-    <div class="item">
-      내 피부에 맞는 성분
-    </div>
-    <div class="item">
-      주요 관리 방법
-    </div>
-  </div>
-</div>
-<div class="content">
-  content
 </div>
