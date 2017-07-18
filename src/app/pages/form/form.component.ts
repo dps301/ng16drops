@@ -44,11 +44,19 @@ export class FormComponent implements OnInit {
 
   addAnswer(value) {
     if(value.arr == 'user') {
-      this.userInfo[value.index] = value.item;
+      this.userInfo[value.index] = Object.assign({}, value.item)
+      if(Object.keys(value.item).length === 0)
+        this.userInfo[value.index].form_item_no = null;
+      else
+        this.userInfo[value.index].form_item_no = value.index;
       this.userInfo[value.index].title = value.title;
     }
     else {
-      this.answers[value.index] = value.item;
+      this.answers[value.index] = Object.assign({}, value.item)
+      if(Object.keys(value.item).length === 0)
+        this.answers[value.index].form_item_no = null;
+      else
+        this.answers[value.index].form_item_no = value.index;
       this.answers[value.index].title = value.title;
     }
   }
@@ -80,11 +88,21 @@ export class FormComponent implements OnInit {
       }
     }
 
-    this.http.post('/items', {'user': userArr, 'items': itemsArr})
+    this.http.post('/apply', {'user': userArr, 'items': itemsArr})
     .subscribe(
       data => {
         
       }
     );
+  }
+
+  mobileIdx(i) {
+    if(i == this.now)
+      return true;
+    else if(i == this.now - 1 || i == this.now + 1) {
+      return true;
+    }
+
+    return false;
   }
 }

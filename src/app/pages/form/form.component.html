@@ -28,10 +28,12 @@
     </div>
     <div class="mobile">
       <div [class.now]="now == 0" class="title default-text-color none-active" (click)="now = 0">
-        기본정보
+        <div class="index">STEP.1</div>
+        <div class="content">기본정보</div>
       </div>
       <div [class.now]="now == (i + 1)" class="title default-text-color none-active" *ngFor="let item of items; let isFirst = first; let isLast = last; let i = index;" (click)="now = (i + 1)">
-        {{item.title}}
+        <div class="index">STEP.{{i + 2}}</div>
+        <div class="content">{{item.title}}</div>
       </div>
     </div>
   </div>

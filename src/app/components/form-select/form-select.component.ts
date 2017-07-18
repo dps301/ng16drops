@@ -20,7 +20,7 @@ export class FormSelectComponent implements OnInit {
 
   getData() {
     if(this.no == -1)
-      return {form_item_no: null};
+      return {};
     return {form_item_no: this.menu.formItemNo, no: this.no};
   }
 

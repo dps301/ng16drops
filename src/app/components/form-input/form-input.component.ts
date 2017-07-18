@@ -20,7 +20,7 @@ export class FormInputComponent implements OnInit {
 
   getData() {
     if(this.inputVal.length < 1)
-      return {form_item_no: null};
+      return {};
     return {form_item_no: this.menu.formItemNo, answer: this.inputVal};
   }
 
