@@ -44,6 +44,7 @@ export class FormCheckComponent implements OnInit {
       }
     }
 
+    console.log(this.getData());
     this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title});
   }
 
@@ -51,6 +52,6 @@ export class FormCheckComponent implements OnInit {
     if(this.selectedItems.length == 0) {
       return {};
     }
-    return this.selectedItems;
+    return {no: this.selectedItems};
   }
 }
