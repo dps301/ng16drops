@@ -15,7 +15,7 @@ export class FormSelectComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title});
+    this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title, type: this.menu.type});
   }
 
   getData() {
@@ -26,6 +26,6 @@ export class FormSelectComponent implements OnInit {
 
   changeItemNo(val) {
     this.no = val;
-    this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title});
+    this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title, type: this.menu.type});
   }
 }

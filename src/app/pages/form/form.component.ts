@@ -50,6 +50,7 @@ export class FormComponent implements OnInit {
       else
         this.userInfo[value.index].form_item_no = value.index;
       this.userInfo[value.index].title = value.title;
+      this.userInfo[value.index].type = value.type;
     }
     else {
       this.answers[value.index] = Object.assign({}, value.item)
@@ -58,6 +59,7 @@ export class FormComponent implements OnInit {
       else
         this.answers[value.index].form_item_no = value.index;
       this.answers[value.index].title = value.title;
+      this.answers[value.index].type = value.type;
     }
   }
 

@@ -25,7 +25,7 @@ export class FormCheckComponent implements OnInit {
         this.menu.descript = "";
       this.menu.descript += "(최대"+this.limit+"개)";
     }
-    this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title});
+    this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title, type: this.menu.type});
   }
 
   addSelectedValue(item) {
@@ -44,8 +44,7 @@ export class FormCheckComponent implements OnInit {
       }
     }
 
-    console.log(this.getData());
-    this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title});
+    this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title, type: this.menu.type});
   }
 
   getData() {
