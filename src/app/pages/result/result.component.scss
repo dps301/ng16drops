@@ -19,6 +19,7 @@
     }
 
     .container {
+        overflow-y: scroll;
         padding: 0px 15px;
         background: white;
 
@@ -77,10 +78,14 @@
             .recommend-content {
                 display: flex;
                 flex-direction: row;
-                margin: 0px 25px;
+                margin: 0px 75x;
+
 
                 .card {
-                    margin: 10px;
+                    margin: auto 5px;
+                    margin-top: 50px;
+                    margin-bottom: 20px;
+                    flex: 1;
 
                     .img-container {
                         display: flex;
@@ -102,7 +107,7 @@
                     .text-container {
                         display: flex;
                         word-break: break-all;
-                        height: 150px;
+                        min-height: 150px;
                         width: auto;
                         background: #98c9ec;
                         color: white;
