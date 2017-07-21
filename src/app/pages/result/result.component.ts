@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-result',
@@ -14,6 +14,7 @@ export class ResultComponent implements OnInit {
     {image: "assets/images/icon_for_chemical.png", content: "fdasfsdafdsafddddddddddddddddddddddddddddddddddsdsdsdsdsasffdasfsdafdsafddddddddddddddddddddddddddddddddddsdsdsdsdsasf", "imgText": "가자가자"},
     {image: "assets/images/icon_for_chemical2.png", content: "fdasfsdafdsafddddddddddddddddddddddddddddddddddsdsdsdsdsasffdasfsdafdsafddddddddddddddddddddddddddddddddddsdsdsdsdsasf", "imgText": "가자가자"},
   ];
+  warning: Array<any> = ["유수분관리", "민감관리", "손상관리", "노화관리", "탄력관리"];
   type = 'radar';
   data = {
     labels: this.barLabel,
@@ -33,19 +34,21 @@ export class ResultComponent implements OnInit {
     responsive: true,
     maintainAspectRatio: false,
     legend: {
-      display: false
+      display: false,
     },
     tooltips: {
       enabled: false
     },
     scale: {
-        // Hides the scale
-        display: true,
-        ticks: {
-          display: false,
-          min: 0,
-          max: 100,
-        },
+      ticks: {
+        display: false,
+        min: 0,
+        max: 100,
+      },
+      pointLabels: {
+        fontSize: 13,
+        fontColor: '#818285'
+      }
     }
   };
 

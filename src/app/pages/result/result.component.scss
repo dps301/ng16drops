@@ -1,5 +1,7 @@
 .background {
+    font-weight: 500;
     padding: 26px 23px;
+    color: #818285;
 
     .title {
         display: flex;
@@ -9,7 +11,8 @@
         font-weight: 700;
         border-top: 3px black solid;
         border-bottom: 3px black solid;
-        padding: 7px 0px;
+        padding: 15px 0px;
+        color: black;
 
         img {
             width: 15px;
@@ -24,13 +27,25 @@
         background: white;
 
         .welcome {
+            position: relative;
+            margin: 50px 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
+            .welcome-content {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                width: 60%;
+            }
         }
         .graph {
             .graph-content {
                 .type-name {
                     border-bottom: 1px solid black;
-                    padding: 12px 0px;
+                    padding: 15px 0px;
+                    color: black;
 
                     span {
                         margin-left: 35px;
@@ -41,9 +56,11 @@
                     display: flex;
                     flex-direction: row;
                     align-items: flex-end;
+                    padding: 60px 0px;
 
                     .bar-graph {
                         flex: 6;
+                        margin-left: 35px;
 
                         .item {
                             display: flex;
@@ -51,8 +68,13 @@
                             margin: 13px 0px;
 
                             .item-title {
+                                flex: 1;
+                            }
+                            .right {
+                                margin-left: 20px;
                             }
                             .progress-container {
+                                flex: 5;
                                 background: #f3f3f4;
                                 width: 200px;
                                 height: inherit;
@@ -66,20 +88,59 @@
                         }
                     }
                     .radar {
+                        position: relative;
                         flex: 5;
+
+                        .type-img {
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            width: 20%;
+                            position: absolute;
+                        }
                     }
                 }
             }
         }
         .step3 {
+            padding-top: 40x;
+            padding-bottom: 60px;
 
+            .step3-content {
+                margin: 0px 50px;
+
+                .items {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    margin: 40px 0px;
+
+                    img {
+                        flex: 1;
+                        width: auto;
+                        height: 30px;
+                    }
+                    .step-title {
+                        flex: 3;
+                        margin: 0px 30px;
+                        font-weight: 600;
+                        font-size: 17px;
+                        color: #98c9ec;
+                    }
+                    .step-content {
+                        flex: 20;
+                        word-break: keep-all;
+                    }
+                }
+            }
         }
         .recommend {
+            padding-bottom: 80px;
+
             .recommend-content {
                 display: flex;
                 flex-direction: row;
-                margin: 0px 75x;
-
+                margin: 0px 35px;
 
                 .card {
                     margin: auto 5px;
@@ -113,6 +174,26 @@
                         color: white;
                         padding: 10px;
                     }
+                }
+            }
+            .warning {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-top: 20px;
+                margin-left: 35px;
+
+                img {
+                    width: auto;
+                    height: 25px;
+                }
+                .warning-title {
+                    color: #f26c57;
+                    font-weight: 700;
+                    margin-left: 10px;
+                }
+                .content {
+                    margin-left: 10px;
                 }
             }
         }
