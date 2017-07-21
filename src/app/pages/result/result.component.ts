@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { HttpService } from '../../services/http.service';
 
 @Component({
   selector: 'app-result',
@@ -51,9 +52,19 @@ export class ResultComponent implements OnInit {
       }
     }
   };
+  result: any = {};
+  items: Array<any> = [];
 
-  constructor() { }
+  constructor(private http: HttpService) { }
 
   ngOnInit() {
+    this.http.get('/result/62')
+    .subscribe(
+      data => {
+        this.result = data.json();
+        this.items = this.result.item;
+        console.log(this.result);
+      }
+    );
   }
 }

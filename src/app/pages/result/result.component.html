@@ -1,9 +1,11 @@
 <div class="background result-default-bg-color">
   <div class="container">
     <div class="welcome">
-      <img src="assets/images/background.png" alt="">
       <div class="welcome-content">
-        1231123
+        <div>
+          당신의 피부타입은 입니다.
+        </div>
+        {{result.descript}}
       </div>
     </div>
     <div class="graph">
@@ -12,7 +14,7 @@
       </div>
       <div class="graph-content">
         <div class="type-name">
-          <span>데자뷰형</span>
+          <span>{{result.name}}</span>
         </div>
         <div class="graph-container">
           <div class="bar-graph">
@@ -41,37 +43,13 @@
         <img src="assets/images/check_for_title.png" alt="">주요 관리 방법
       </div>
       <div class="step3-content">
-        <div class="items">
-          <img src="assets/images/warning.png" alt="">
+        <div class="items" *ngFor="let item of items">
+          <img [src]="item.icon_url" alt="">
           <div class="step-title">
-            수분공급
+            {{item.title}}
           </div>
           <div class="step-content">
-            수분공급을 통하여 트로블로 인한 열을 낮추고 탄력적인 피부를 유지할 수 있습니다.
-            유분기가 적고 수분기가 많은 제품을 사용하는 것이 좋고,
-            지성이라고 안심하는 것이 아니라 수분을 충분히 공급하는 것이 중요합니다.
-          </div>
-        </div>
-        <div class="items">
-          <img src="assets/images/warning.png" alt="">
-          <div class="step-title">
-            수분공급
-          </div>
-          <div class="step-content">
-            수분공급을 통하여 트로블로 인한 열을 낮추고 탄력적인 피부를 유지할 수 있습니다.
-            유분기가 적고 수분기가가가 많은 제품을 사용하는 것이 좋고,
-            지성이라고 안심하는 것이 아니라 수분을 충분히 공급하는 것이 중요합니다.
-          </div>
-        </div>
-        <div class="items">
-          <img src="assets/images/warning.png" alt="">
-          <div class="step-title">
-            수분공급
-          </div>
-          <div class="step-content">
-            수분공급을 통하여 트로블로 인한 열을 낮추고 탄력적인 피부를 유지할 수 있습니다.
-            유분기가 적고 수분기가 많은 제품을 사용하는 것이 좋고,
-            지성이라고 안심하는 것이 아니라 수분을 충분히 공급하는 것이 중요합니다.
+            {{item.con}}
           </div>
         </div>
       </div>
@@ -81,15 +59,54 @@
         <img src="assets/images/check_for_title.png" alt="">내 피부에 맞는 성분
       </div>
       <div class="recommend-content">
-        <div class="card" *ngFor="let item of cards">
+        <div class="card">
           <div class="img-container">
-            <img [src]="item.image" alt="">
+            <img [src]="result.con1_img" alt="">
             <div class="img-text">
-              {{item.imgText}}
+              {{result.con1}}
             </div>
           </div>
           <div class="text-container">
-            {{item.content}}
+            {{result.con1_descript}}
+          </div>
+        </div>
+      </div>
+      <div class="recommend-content">
+        <div class="card">
+          <div class="img-container">
+            <img [src]="result.con2_img" alt="">
+            <div class="img-text">
+              {{result.con2}}
+            </div>
+          </div>
+          <div class="text-container">
+            {{result.con2_descript}}
+          </div>
+        </div>
+      </div>
+      <div class="recommend-content">
+        <div class="card">
+          <div class="img-container">
+            <img [src]="result.con3_img" alt="">
+            <div class="img-text">
+              {{result.con3}}
+            </div>
+          </div>
+          <div class="text-container">
+            {{result.con3_descript}}
+          </div>
+        </div>
+      </div>
+      <div class="recommend-content">
+        <div class="card">
+          <div class="img-container">
+            <img [src]="result.con4_img" alt="">
+            <div class="img-text">
+              {{result.con4}}
+            </div>
+          </div>
+          <div class="text-container">
+            {{result.con4_descript}}
           </div>
         </div>
       </div>

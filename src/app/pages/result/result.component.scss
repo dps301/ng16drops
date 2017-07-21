@@ -25,19 +25,27 @@
         overflow-y: scroll;
         padding: 0px 15px;
         background: white;
+        max-width: 1280px;
+        margin: auto;
 
         .welcome {
+            background: url('../../../assets/images/background.png');
+            background-size: 100% 100%;
+            background-position: center;
             position: relative;
             margin: 50px 35px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
 
             .welcome-content {
-                position: absolute;
                 display: flex;
+                flex-direction: column;
+                align-items: center;
                 justify-content: center;
                 width: 60%;
+                padding: 40px 0px;
             }
         }
         .graph {
@@ -95,7 +103,7 @@
                             top: 50%;
                             left: 50%;
                             transform: translate(-50%, -50%);
-                            width: 20%;
+                            width: 10%;
                             position: absolute;
                         }
                     }
@@ -117,8 +125,8 @@
 
                     img {
                         flex: 1;
-                        width: auto;
-                        height: 30px;
+                        width: 30px;
+                        height: auto;
                     }
                     .step-title {
                         flex: 3;
