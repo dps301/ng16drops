@@ -42,7 +42,7 @@
       <img [class.hidden]="now == 0" src="assets/images/button_left.png" alt="" (click)="move('-')">
     </div>
     <div class="carousel">
-      <div class="step" [ngClass]="{'current': now == 0}">
+      <div class="step" [ngClass]="{'current': now == 0}" *ngIf="now == 0">
         <div class="content-sizer">
           <ng-container *ngFor="let item of user; let i = index;">
             <ng-container [ngSwitch]="item.type">

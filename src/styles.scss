@@ -5,9 +5,11 @@
 }
 
 html, body {
+    height: 100%;
     margin: 0px;
     font-family: 'KoPub';
     overflow-x: hidden;
+    overflow-y: scroll;
     word-break: keep-all;
 }
 
