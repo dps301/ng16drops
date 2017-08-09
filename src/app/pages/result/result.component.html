@@ -1,14 +1,18 @@
 <div class="background result-default-bg-color">
   <div class="container">
     <div class="welcome">
-      <div class="welcome-content">
-        <div>
-          당신의 피부타입은 입니다.
+      <img class="background-img" src="assets/images/background.png" alt="">
+       <div class="welcome-content">
+        <div class="welcome-title">
+          당신의 피부타입은 {{result.name}} 입니다.
         </div>
-        <div>
+        <div class="welcome-title-img">
+          <img [src]="result.main_img" alt="">
+        </div>
+        <div class="welcome-title-desc">
           {{result.descript}}
         </div>
-      </div>
+      </div> 
     </div>
     <div class="graph">
       <div class="title">
@@ -67,9 +71,9 @@
           <div class="card">
             <div class="img-container">
               <img [src]="result.con1_img" alt="">
-              <div class="img-text">
+              <!-- <div class="img-text">
                 {{result.con1}}
-              </div>
+              </div> -->
             </div>
             <div class="text-container">
               {{result.con1_descript}}
@@ -80,9 +84,9 @@
           <div class="card">
             <div class="img-container">
               <img [src]="result.con2_img" alt="">
-              <div class="img-text">
+              <!-- <div class="img-text">
                 {{result.con2}}
-              </div>
+              </div> -->
             </div>
             <div class="text-container">
               {{result.con2_descript}}
@@ -93,9 +97,9 @@
           <div class="card">
             <div class="img-container">
               <img [src]="result.con3_img" alt="">
-              <div class="img-text">
+              <!-- <div class="img-text">
                 {{result.con3}}
-              </div>
+              </div> -->
             </div>
             <div class="text-container">
               {{result.con3_descript}}
@@ -106,9 +110,9 @@
           <div class="card">
             <div class="img-container">
               <img [src]="result.con4_img" alt="">
-              <div class="img-text">
+              <!-- <div class="img-text">
                 {{result.con4}}
-              </div>
+              </div> -->
             </div>
             <div class="text-container">
               {{result.con4_descript}}
