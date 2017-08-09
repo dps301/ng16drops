@@ -5,7 +5,9 @@
         <div>
           당신의 피부타입은 입니다.
         </div>
-        {{result.descript}}
+        <div>
+          {{result.descript}}
+        </div>
       </div>
     </div>
     <div class="graph">
@@ -26,7 +28,7 @@
                 <div class="progress" [ngStyle]="{'width': barAmt[idx]+'%'}">
                 </div>
               </div>
-              <div class="item-title right">
+              <div class="right">
                 {{barAmt[idx]}}
               </div>
             </div>
@@ -44,9 +46,11 @@
       </div>
       <div class="step3-content">
         <div class="items" *ngFor="let item of items">
-          <img [src]="item.icon_url" alt="">
-          <div class="step-title">
-            {{item.title}}
+          <div class="img-container">
+            <img [src]="item.icon_url" alt="">
+            <div class="step-title">
+              {{item.title}}
+            </div>
           </div>
           <div class="step-content">
             {{item.con}}
@@ -58,60 +62,70 @@
       <div class="title">
         <img src="assets/images/check_for_title.png" alt="">내 피부에 맞는 성분
       </div>
-      <div class="recommend-content">
-        <div class="card">
-          <div class="img-container">
-            <img [src]="result.con1_img" alt="">
-            <div class="img-text">
-              {{result.con1}}
+      <div class="card-container">
+        <div class="recommend-content">
+          <div class="card">
+            <div class="img-container">
+              <img [src]="result.con1_img" alt="">
+              <div class="img-text">
+                {{result.con1}}
+              </div>
             </div>
-          </div>
-          <div class="text-container">
-            {{result.con1_descript}}
+            <div class="text-container">
+              {{result.con1_descript}}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="recommend-content">
-        <div class="card">
-          <div class="img-container">
-            <img [src]="result.con2_img" alt="">
-            <div class="img-text">
-              {{result.con2}}
+        <div class="recommend-content">
+          <div class="card">
+            <div class="img-container">
+              <img [src]="result.con2_img" alt="">
+              <div class="img-text">
+                {{result.con2}}
+              </div>
             </div>
-          </div>
-          <div class="text-container">
-            {{result.con2_descript}}
+            <div class="text-container">
+              {{result.con2_descript}}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="recommend-content">
-        <div class="card">
-          <div class="img-container">
-            <img [src]="result.con3_img" alt="">
-            <div class="img-text">
-              {{result.con3}}
+        <div class="recommend-content">
+          <div class="card">
+            <div class="img-container">
+              <img [src]="result.con3_img" alt="">
+              <div class="img-text">
+                {{result.con3}}
+              </div>
             </div>
-          </div>
-          <div class="text-container">
-            {{result.con3_descript}}
+            <div class="text-container">
+              {{result.con3_descript}}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="recommend-content">
-        <div class="card">
-          <div class="img-container">
-            <img [src]="result.con4_img" alt="">
-            <div class="img-text">
-              {{result.con4}}
+        <div class="recommend-content">
+          <div class="card">
+            <div class="img-container">
+              <img [src]="result.con4_img" alt="">
+              <div class="img-text">
+                {{result.con4}}
+              </div>
             </div>
-          </div>
-          <div class="text-container">
-            {{result.con4_descript}}
+            <div class="text-container">
+              {{result.con4_descript}}
+            </div>
           </div>
         </div>
       </div>
       <div class="warning">
-        <img src="assets/images/warning.png" alt=""> <span class="warning-title">주의해야 할 성분</span> <span class="content" *ngFor="let item of warning">{{item}}</span>
+        <div class="img-container">
+          <img src="assets/images/warning.png" alt="">
+          <div class="warning-title">주의해야 할 성분</div>
+        </div>
+        <div class="content">
+          <div class="items" *ngFor="let item of warning">
+            {{item}}
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -29,11 +29,13 @@
         margin: auto;
 
         .welcome {
+            width: 600px;
+            height: 450px;
             background: url('../../../assets/images/background.png');
             background-size: 100% 100%;
             background-position: center;
             position: relative;
-            margin: 50px 35px;
+            margin: 70px auto;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -44,8 +46,19 @@
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
+                height: 100%;
                 width: 60%;
                 padding: 40px 0px;
+            }
+            
+            @media screen and (max-width: 650px) {
+                width: auto;
+                height: auto;
+                background: none;
+
+                .welcome-content {
+                    width: 100%;
+                }
             }
         }
         .graph {
@@ -64,30 +77,57 @@
                     display: flex;
                     flex-direction: row;
                     align-items: flex-end;
-                    padding: 60px 0px;
+                    padding: 60px 50px;
+
+                    @media screen and (max-width: 1000px) {
+                        flex-direction: column;
+                        align-items: center;
+
+                        .bar-graph {
+                            order: 2;
+                            margin-left: 0;
+                            width: 80%;
+                            width: 100%;
+                        }
+                        .radar {
+                            order: 1;
+                        }
+                    }
+
+                    @media screen and (max-width: 650px) {
+                        padding: 30px 10px;
+                    }
 
                     .bar-graph {
-                        flex: 6;
-                        margin-left: 35px;
+                        flex-shrink: 0;
+                        flex-grow: 1;
 
                         .item {
+                            width: 100%;
                             display: flex;
                             flex-direction: row;
                             margin: 13px 0px;
 
                             .item-title {
-                                flex: 1;
+                                flex-basis: 20%;
+                                word-break: normal;
                             }
                             .right {
                                 margin-left: 20px;
+                                align-self: center;
                             }
                             .progress-container {
-                                flex: 5;
+                                flex-grow: 1;
                                 background: #f3f3f4;
                                 width: 200px;
                                 height: inherit;
+                                position: relative;
 
                                 .progress {
+                                    position: absolute;
+                                    left: 0%;
+                                    top: 0%;
+                                    bottom: 0%;
                                     background: #98c9ec;
                                     width: 50px;
                                     height: 100%;
@@ -97,7 +137,8 @@
                     }
                     .radar {
                         position: relative;
-                        flex: 5;
+                        flex-basis: 45%;
+                        flex-shrink: 0;
 
                         .type-img {
                             top: 50%;
@@ -111,8 +152,29 @@
             }
         }
         .step3 {
-            padding-top: 40x;
-            padding-bottom: 60px;
+            padding: 40px 0px 60px 0px;
+
+            @media screen and (max-width: 650px) {
+                padding: 20px 0px 30px 0px;
+
+                .step3-content {
+                    margin: 0px 10px !important;
+
+                    .items {
+                        margin: 20px 0px !important;
+                        flex-direction: column !important;
+                        align-items: flex-start !important;
+
+                        .img-container {
+                            margin: 25px 0px !important;
+                            
+                            img {
+                                margin-right: 5px;
+                            }
+                        }
+                    }
+                }
+            }
 
             .step3-content {
                 margin: 0px 50px;
@@ -123,20 +185,28 @@
                     align-items: center;
                     margin: 40px 0px;
 
-                    img {
-                        flex: 1;
-                        width: 30px;
-                        height: auto;
-                    }
-                    .step-title {
-                        flex: 3;
-                        margin: 0px 30px;
-                        font-weight: 600;
-                        font-size: 17px;
-                        color: #98c9ec;
+                    .img-container {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        flex-basis: 25%;
+                        flex-shrink: 0;
+
+                        img {
+                            width: 30px;
+                            height: auto;
+                        }
+
+                        .step-title {
+                            margin: 0px 10px;
+                            font-weight: 600;
+                            font-size: 17px;
+                            color: #98c9ec;
+                            word-break: normal;
+                        }
                     }
                     .step-content {
-                        flex: 20;
+                        flex-grow: 1;
                         word-break: keep-all;
                     }
                 }
@@ -145,42 +215,62 @@
         .recommend {
             padding-bottom: 80px;
 
-            .recommend-content {
+            .card-container {
                 display: flex;
                 flex-direction: row;
                 margin: 0px 35px;
 
-                .card {
-                    margin: auto 5px;
-                    margin-top: 50px;
-                    margin-bottom: 20px;
-                    flex: 1;
+                @media screen and (max-width: 1000px) {
+                    flex-wrap: wrap;
 
-                    .img-container {
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        background: grey;
-                        height: 200px;
-
-                        img {
-                            height: 80px;
+                    .recommend-content {
+                        @media screen and (max-width: 1000px) {
+                            flex-basis: 50% !important;
                         }
-                        .img-text {
-                            color: white;
-                            font-size: 1.3rem;
-                            margin: 10px 0px;
+                        @media screen and (max-width: 600px) {
+                            flex-basis: 100% !important;
                         }
                     }
-                    .text-container {
-                        display: flex;
-                        word-break: break-all;
-                        min-height: 150px;
-                        width: auto;
-                        background: #98c9ec;
-                        color: white;
-                        padding: 10px;
+                }
+
+                .recommend-content {
+                    flex-basis: 25%;
+                    flex-shrink: 0;
+                    display: flex;
+                    flex-direction: row;
+
+                    .card {
+                        margin: auto 12px;
+                        margin-top: 50px;
+                        margin-bottom: 20px;
+                        flex: 1;
+
+                        .img-container {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            background: grey;
+                            height: 200px;
+
+                            img {
+                                height: 80px;
+                            }
+                            .img-text {
+                                color: white;
+                                font-size: 1.3rem;
+                                margin: 10px 0px;
+                            }
+                        }
+                        .text-container {
+                            display: flex;
+                            word-break: break-all;
+                            min-height: 150px;
+                            width: auto;
+                            background: #98c9ec;
+                            color: white;
+                            padding: 10px;
+                        }
                     }
                 }
             }
@@ -188,20 +278,41 @@
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                margin-top: 20px;
-                margin-left: 35px;
+                margin: 20px 35px 0px 35px;
+                flex-wrap: wrap;
 
-                img {
-                    width: auto;
-                    height: 25px;
+                @media screen and (max-width: 600px) {
+                    flex-direction: column !important;
+                    align-items: flex-start !important;
+
+                    .content {
+                        margin: 10px 0px;
+                    }
                 }
-                .warning-title {
-                    color: #f26c57;
-                    font-weight: 700;
-                    margin-left: 10px;
+
+                .img-container {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    margin-right: 10px;
+
+                    img {
+                        width: auto;
+                        height: 25px;
+                    }
+                    .warning-title {
+                        color: #f26c57;
+                        font-weight: 700;
+                        margin-left: 10px;
+                    }
                 }
                 .content {
-                    margin-left: 10px;
+                    display: flex;
+                    flex-direction: row;
+
+                    .items:not(:first-child) {
+                        margin-left: 10px;
+                    }
                 }
             }
         }
