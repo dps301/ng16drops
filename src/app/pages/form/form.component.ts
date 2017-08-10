@@ -12,9 +12,6 @@ export class FormComponent implements OnInit {
   answers: any = {};
   user: Array<any> = [];
   now: number = 0;
-  total: number = 0;
-  itemsTotal: number = 0;
-  userTotal: number = 0;
 
   constructor(private http: HttpService, private cdRef: ChangeDetectorRef) { }
 
@@ -23,10 +20,6 @@ export class FormComponent implements OnInit {
     .subscribe(
       data => {
         console.log(data.json());
-        this.total = data.json().total;
-        this.itemsTotal = data.json().itemsTotal;
-        this.userTotal = data.json().userTotal;
-        
         this.user = data.json().user;
         this.items = data.json().items;
       }
@@ -48,19 +41,22 @@ export class FormComponent implements OnInit {
       if(Object.keys(value.item).length === 0)
         this.userInfo[value.index].form_item_no = null;
       else
-        this.userInfo[value.index].form_item_no = value.index;
+        this.userInfo[value.index].form_item_no = value.formItemNo;
       this.userInfo[value.index].title = value.title;
       this.userInfo[value.index].type = value.type;
+      this.userInfo[value.index].index = value.index;
     }
     else {
-      this.answers[value.index] = Object.assign({}, value.item)
+      (this.answers[this.now - 1])[value.formItemNo] = Object.assign({}, value.item)
       if(Object.keys(value.item).length === 0)
-        this.answers[value.index].form_item_no = null;
+        (this.answers[this.now - 1])[value.formItemNo].form_item_no = null;
       else
-        this.answers[value.index].form_item_no = value.index;
-      this.answers[value.index].title = value.title;
-      this.answers[value.index].type = value.type;
+        (this.answers[this.now - 1])[value.formItemNo].form_item_no = value.formItemNo;
+      (this.answers[this.now - 1])[value.formItemNo].title = value.title;
+      (this.answers[this.now - 1])[value.formItemNo].type = value.type;
+      (this.answers[this.now - 1])[value.formItemNo].index = value.index;
     }
+    console.log(this.user);
   }
 
   submit() {
@@ -106,5 +102,15 @@ export class FormComponent implements OnInit {
     }
 
     return false;
+  }
+
+  next(idx) {
+    // this.answers.filter(
+    //   (item) => {
+    //     if(!item.form_item_no)
+    //       alert(item.title + ' 항목을 확인해주세요.');
+    //   }
+    // );
+    this.now = idx + 1;
   }
 }

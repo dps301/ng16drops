@@ -1,8 +1,8 @@
 <div class="container">
   <div class="header default-bg-color">
     <div class="desktop">
-      <div [class.now]="now == 0" class="title-item default-text-color none-active" (click)="now = 0">
-        <div class="title-text cursor">
+      <div [class.now]="now == 0" class="title-item default-text-color none-active">
+        <div class="title-text">
           <div class="index">
             STEP.1
           </div>
@@ -13,8 +13,8 @@
       </div>
       <img src="assets/images/abovebar.png" alt="">
       <ng-container *ngFor="let item of items; let isFirst = first; let isLast = last; let i = index;">
-        <div [class.now]="now == (i + 1)" class="title-item default-text-color none-active" (click)="now = (i + 1)">
-          <div class="title-text cursor">
+        <div [class.now]="now == (i + 1)" class="title-item default-text-color none-active">
+          <div class="title-text">
             <div class="index">
               STEP.{{i + 2}}
             </div>
@@ -38,39 +38,45 @@
     </div>
   </div>
   <div class="form-content">
-    <div class="next" >
+    <!-- <div class="next" >
       <img [class.hidden]="now == 0" src="assets/images/button_left.png" alt="" (click)="move('-')">
-    </div>
+    </div> -->
     <div class="carousel">
       <div class="step" [ngClass]="{'current': now == 0}" *ngIf="now == 0">
         <div class="content-sizer">
           <ng-container *ngFor="let item of user; let i = index;">
             <ng-container [ngSwitch]="item.type">
-              <form-input [menu]="item" *ngSwitchCase="0" (addAnswer)="addAnswer($event)" [arr]="'user'"></form-input>
-              <form-select [menu]="item" *ngSwitchCase="1" (addAnswer)="addAnswer($event)" [arr]="'user'"></form-select>
-              <form-check [menu]="item" *ngSwitchCase="2" (addAnswer)="addAnswer($event)" [arr]="'user'"></form-check>
+              <form-input [menu]="item" [index]="0" *ngSwitchCase="0" (addAnswer)="addAnswer($event)" [arr]="'user'"></form-input>
+              <form-select [menu]="item" [index]="0" *ngSwitchCase="1" (addAnswer)="addAnswer($event)" [arr]="'user'"></form-select>
+              <form-check [menu]="item" [index]="0" *ngSwitchCase="2" (addAnswer)="addAnswer($event)" [arr]="'user'"></form-check>
             </ng-container>
           </ng-container>
+          <div *ngIf="!isLast" class="btn-success cursor" (click)="next(0)">
+            다음
+          </div>
         </div>
       </div>
       <div class="step" [ngClass]="{'current': now == (i + 1)}" *ngFor="let item of items; let i = index; let isLast = last">
         <div class="content-sizer">
           <ng-container *ngFor="let menu of item.items;">
             <ng-container [ngSwitch]="menu.type">
-              <form-input [menu]="menu" *ngSwitchCase="0" (addAnswer)="addAnswer($event)" [arr]="'item'"></form-input>
-              <form-select [menu]="menu" *ngSwitchCase="1" (addAnswer)="addAnswer($event)" [arr]="'item'"></form-select>
-              <form-check [menu]="menu" *ngSwitchCase="2" (addAnswer)="addAnswer($event)" [arr]="'item'" [limit]="menu.limit"></form-check>
+              <form-input [menu]="menu" [index]="i" *ngSwitchCase="0" (addAnswer)="addAnswer($event)" [arr]="'item'"></form-input>
+              <form-select [menu]="menu" [index]="i" *ngSwitchCase="1" (addAnswer)="addAnswer($event)" [arr]="'item'"></form-select>
+              <form-check [menu]="menu" [index]="i" *ngSwitchCase="2" (addAnswer)="addAnswer($event)" [arr]="'item'" [limit]="menu.limit"></form-check>
             </ng-container>
           </ng-container>
+          <div *ngIf="!isLast" class="btn-success cursor" (click)="next(i + 1)">
+            다음
+          </div>
           <div *ngIf="isLast" class="btn-success cursor" (click)="submit()">
             제출
           </div>
         </div>
       </div>
     </div>
-    <div class="next">
+    <!-- <div class="next">
       <img [class.hidden]="now == items.length" src="assets/images/button_right.png" (click)="move('+')">
-    </div>
+    </div> -->
     <div [class.hidden]="now == 0" class="side-button left" (click)="move('-')">
       <img src="assets/images/sidebutton-left.png" alt="">
     </div>

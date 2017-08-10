@@ -9,6 +9,7 @@ export class FormCheckComponent implements OnInit {
   @Input() menu: any;
   @Input() arr: number;
   @Input() limit: number;
+  @Input() index: number;
   @Output() addAnswer: EventEmitter<any> = new EventEmitter();
 
   selectedItems: Array<any> = [];
@@ -25,7 +26,7 @@ export class FormCheckComponent implements OnInit {
         this.menu.descript = "";
       this.menu.descript += "(최대"+this.limit+"개)";
     }
-    this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title, type: this.menu.type});
+    this.addAnswer.next({formItemNo: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title, type: this.menu.type, index: this.index});
   }
 
   addSelectedValue(item) {
@@ -44,7 +45,7 @@ export class FormCheckComponent implements OnInit {
       }
     }
 
-    this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title, type: this.menu.type});
+    this.addAnswer.next({formItemNo: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title, type: this.menu.type, index: this.index});
   }
 
   getData() {
