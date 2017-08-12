@@ -25,8 +25,9 @@
         overflow-y: scroll;
         padding: 0px 15px;
         background: white;
-        max-width: 1280px;
+        max-width: 1001px;
         margin: auto;
+        box-shadow: 4px 4px 12px 6px rgba(0, 0, 0, 0.11);
 
         .welcome {
             position: relative;
@@ -36,9 +37,6 @@
             justify-content: center;
             align-items: center;
 
-            @media screen and (max-width: 1000px) {
-                // margin: 35px 50px;
-            }
             @media screen and (max-width: 1000px) {
                 margin: 35px 0px;
 
@@ -59,10 +57,10 @@
             }
 
             .welcome-content {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+                // position: absolute;
+                // top: 50%;
+                // left: 50%;
+                // transform: translate(-50%, -50%);
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -230,20 +228,22 @@
                         flex-shrink: 0;
 
                         img {
-                            width: 30px;
+                            width: 40px;
                             height: auto;
                         }
 
                         .step-title {
                             margin: 0px 10px;
                             font-weight: 600;
-                            font-size: 17px;
+                            font-size: 20px;
                             color: #98c9ec;
                             word-break: normal;
                         }
                     }
                     .step-content {
                         flex-grow: 1;
+                        line-height: 21px;
+                        font-size: 15px;
                         word-break: keep-all;
                     }
                 }
@@ -277,7 +277,7 @@
                     .card {
                         flex-shrink: 0;
                         margin: auto 12px;
-                        margin-top: 50px;
+                        margin-top: 30px;
                         margin-bottom: 20px;
                         flex: 1;
 

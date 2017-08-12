@@ -10,6 +10,7 @@ export class FormCheckComponent implements OnInit {
   @Input() arr: number;
   @Input() limit: number;
   @Input() index: number;
+  @Input() innerIndex: number;
   @Output() addAnswer: EventEmitter<any> = new EventEmitter();
 
   selectedItems: Array<any> = [];
@@ -18,15 +19,16 @@ export class FormCheckComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(!this.menu.descript)
+        this.menu.descript = "";
     if(this.limit == 0) {
       this.limit = 9999;
+      this.menu.descript += "(복수선택가능)";
     }
     else {
-      if(!this.menu.descript)
-        this.menu.descript = "";
       this.menu.descript += "(최대"+this.limit+"개)";
     }
-    this.addAnswer.next({formItemNo: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title, type: this.menu.type, index: this.index});
+    this.addAnswer.next({formItemNo: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title, type: this.menu.type, index: this.index, innerIndex: this.innerIndex});
   }
 
   addSelectedValue(item) {
@@ -45,7 +47,7 @@ export class FormCheckComponent implements OnInit {
       }
     }
 
-    this.addAnswer.next({formItemNo: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title, type: this.menu.type, index: this.index});
+    this.addAnswer.next({formItemNo: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title, type: this.menu.type, index: this.index, innerIndex: this.innerIndex});
   }
 
   getData() {

@@ -8,8 +8,8 @@ import { HttpService } from '../../services/http.service';
 })
 export class FormComponent implements OnInit {
   items: Array<any> = [];
-  userInfo: any = {};
-  answers: any = {};
+  userInfo: any = [];
+  answers: any = [[], [], [], [], []];
   user: Array<any> = [];
   now: number = 0;
 
@@ -47,46 +47,32 @@ export class FormComponent implements OnInit {
       this.userInfo[value.index].index = value.index;
     }
     else {
-      (this.answers[this.now - 1])[value.formItemNo] = Object.assign({}, value.item)
+      (this.answers[value.index])[value.innerIndex] = Object.assign({}, value.item)
       if(Object.keys(value.item).length === 0)
-        (this.answers[this.now - 1])[value.formItemNo].form_item_no = null;
+        (this.answers[value.index])[value.innerIndex].form_item_no = null;
       else
-        (this.answers[this.now - 1])[value.formItemNo].form_item_no = value.formItemNo;
-      (this.answers[this.now - 1])[value.formItemNo].title = value.title;
-      (this.answers[this.now - 1])[value.formItemNo].type = value.type;
-      (this.answers[this.now - 1])[value.formItemNo].index = value.index;
+        (this.answers[value.index])[value.innerIndex].form_item_no = value.formItemNo;
+      (this.answers[value.index])[value.innerIndex].title = value.title;
+      (this.answers[value.index])[value.innerIndex].type = value.type;
+      (this.answers[value.index])[value.innerIndex].index = value.index;
     }
-    console.log(this.user);
   }
 
   submit() {
-    var userArr = [];
-    for (var prop in this.userInfo) {
-      userArr.push(this.userInfo[prop]);
+    for(var i = 0; i < this.answers[4].length; i++) {
+      if(this.answers[4][i] && !this.answers[4][i].form_item_no) {
+        alert(this.answers[4][i].title + ' 항목을 확인해주세요.');
+        return ;
+      }
     }
 
     var itemsArr = [];
-    for (var prop in this.answers) {
-      itemsArr.push(this.answers[prop]);
+    for(var i = 0; i < this.answers.length; i++) {
+      itemsArr = itemsArr.concat(this.answers[i]);
     }
 
-    console.log({'user': userArr, 'items': itemsArr});
-    
-    for(var i = 0; i < userArr.length; i++) {
-      if(!userArr[i].form_item_no) {
-        alert(userArr[i].title + ' 항목을 확인해주세요.');
-        return ;
-      }
-    }
-
-    for(var i = 0; i < itemsArr.length; i++) {
-      if(!itemsArr[i].form_item_no) {
-        alert(itemsArr[i].title + ' 항목을 확인해주세요.');
-        return ;
-      }
-    }
-
-    this.http.post('/apply', {'user': userArr, 'items': itemsArr})
+    // console.log({'user': this.userInfo, 'items': itemsArr});
+    this.http.post('/apply', {'user': this.userInfo, 'items': itemsArr})
     .subscribe(
       data => {
         
@@ -104,13 +90,23 @@ export class FormComponent implements OnInit {
     return false;
   }
 
+  userNext() {
+    for(var i = 0; i < this.userInfo.length; i++) {
+      if(!this.userInfo[i].form_item_no) {
+        alert(this.userInfo[i].title + ' 항목을 확인해주세요.');
+        return ;
+      }
+    }
+    this.now = 1;
+  }
+
   next(idx) {
-    // this.answers.filter(
-    //   (item) => {
-    //     if(!item.form_item_no)
-    //       alert(item.title + ' 항목을 확인해주세요.');
-    //   }
-    // );
+    for(var i = 0; i < this.answers[idx - 1].length; i++) {
+      if(this.answers[idx - 1][i] && !this.answers[idx - 1][i].form_item_no) {
+        alert(this.answers[idx - 1][i].title + ' 항목을 확인해주세요.');
+        return ;
+      }
+    }
     this.now = idx + 1;
   }
 }

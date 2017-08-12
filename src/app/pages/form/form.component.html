@@ -27,11 +27,11 @@
       </ng-container>
     </div>
     <div class="mobile">
-      <div [class.now]="now == 0" class="title default-text-color none-active" (click)="now = 0">
+      <div [class.now]="now == 0" class="title default-text-color none-active">
         <div class="index">STEP.1</div>
         <div class="content">기본정보</div>
       </div>
-      <div [class.now]="now == (i + 1)" class="title default-text-color none-active" *ngFor="let item of items; let isFirst = first; let isLast = last; let i = index;" (click)="now = (i + 1)">
+      <div [class.now]="now == (i + 1)" class="title default-text-color none-active" *ngFor="let item of items; let isFirst = first; let isLast = last; let i = index;">
         <div class="index">STEP.{{i + 2}}</div>
         <div class="content">{{item.title}}</div>
       </div>
@@ -46,23 +46,23 @@
         <div class="content-sizer">
           <ng-container *ngFor="let item of user; let i = index;">
             <ng-container [ngSwitch]="item.type">
-              <form-input [menu]="item" [index]="0" *ngSwitchCase="0" (addAnswer)="addAnswer($event)" [arr]="'user'"></form-input>
-              <form-select [menu]="item" [index]="0" *ngSwitchCase="1" (addAnswer)="addAnswer($event)" [arr]="'user'"></form-select>
-              <form-check [menu]="item" [index]="0" *ngSwitchCase="2" (addAnswer)="addAnswer($event)" [arr]="'user'"></form-check>
+              <form-input [menu]="item" [index]="i" *ngSwitchCase="0" (addAnswer)="addAnswer($event)" [arr]="'user'"></form-input>
+              <form-select [menu]="item" [index]="i" *ngSwitchCase="1" (addAnswer)="addAnswer($event)" [arr]="'user'"></form-select>
+              <form-check [menu]="item" [index]="i" *ngSwitchCase="2" (addAnswer)="addAnswer($event)" [arr]="'user'"></form-check>
             </ng-container>
           </ng-container>
-          <div *ngIf="!isLast" class="btn-success cursor" (click)="next(0)">
+          <div class="btn-success cursor" (click)="userNext()">
             다음
           </div>
         </div>
       </div>
       <div class="step" [ngClass]="{'current': now == (i + 1)}" *ngFor="let item of items; let i = index; let isLast = last">
         <div class="content-sizer">
-          <ng-container *ngFor="let menu of item.items;">
+          <ng-container *ngFor="let menu of item.items; let in_idx = index">
             <ng-container [ngSwitch]="menu.type">
-              <form-input [menu]="menu" [index]="i" *ngSwitchCase="0" (addAnswer)="addAnswer($event)" [arr]="'item'"></form-input>
-              <form-select [menu]="menu" [index]="i" *ngSwitchCase="1" (addAnswer)="addAnswer($event)" [arr]="'item'"></form-select>
-              <form-check [menu]="menu" [index]="i" *ngSwitchCase="2" (addAnswer)="addAnswer($event)" [arr]="'item'" [limit]="menu.limit"></form-check>
+              <form-input [menu]="menu" [index]="i" [innerIndex]="in_idx" *ngSwitchCase="0" (addAnswer)="addAnswer($event)" [arr]="'item'"></form-input>
+              <form-select [menu]="menu" [index]="i" [innerIndex]="in_idx" *ngSwitchCase="1" (addAnswer)="addAnswer($event)" [arr]="'item'"></form-select>
+              <form-check [menu]="menu" [index]="i" [innerIndex]="in_idx" *ngSwitchCase="2" (addAnswer)="addAnswer($event)" [arr]="'item'" [limit]="menu.limit"></form-check>
             </ng-container>
           </ng-container>
           <div *ngIf="!isLast" class="btn-success cursor" (click)="next(i + 1)">
@@ -77,11 +77,11 @@
     <!-- <div class="next">
       <img [class.hidden]="now == items.length" src="assets/images/button_right.png" (click)="move('+')">
     </div> -->
-    <div [class.hidden]="now == 0" class="side-button left" (click)="move('-')">
+    <!-- <div [class.hidden]="now == 0" class="side-button left" (click)="move('-')">
       <img src="assets/images/sidebutton-left.png" alt="">
     </div>
     <div [class.hidden]="now == items.length" class="side-button right" (click)="move('+')">
       <img src="assets/images/sidebutton-right.png" alt="">
-    </div>
+    </div> -->
   </div>
 </div>
