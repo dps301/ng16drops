@@ -114,6 +114,7 @@
                     padding: 60px 50px;
 
                     @media screen and (max-width: 1000px) {
+                        padding: 40px 30px;
                         flex-direction: column;
                         align-items: center;
 
@@ -201,11 +202,14 @@
                         align-items: flex-start !important;
 
                         .img-container {
-                            margin: 25px 0px !important;
+                            margin: 35px 0px !important;
                             
                             img {
                                 margin-right: 5px;
                             }
+                        }
+                        .step-content {
+                            font-size: 14px !important;
                         }
                     }
                 }
@@ -213,6 +217,10 @@
 
             .step3-content {
                 margin: 0px 50px;
+
+                @media screen and (max-width: 1000px) {
+                    margin: 0px 25px;
+                }
 
                 .items {
                     display: flex;
@@ -243,7 +251,7 @@
                     .step-content {
                         flex-grow: 1;
                         line-height: 21px;
-                        font-size: 15px;
+                        font-size: 16px;
                         word-break: keep-all;
                     }
                 }
@@ -258,6 +266,7 @@
                 margin: 0px 35px;
 
                 @media screen and (max-width: 1000px) {
+                    margin: 0px 15px;
                     flex-wrap: wrap;
 
                     .recommend-content {
@@ -266,6 +275,21 @@
                         }
                         @media screen and (max-width: 600px) {
                             flex-basis: 100% !important;
+
+                            .card {
+                                margin: 20px 0px !important;
+                                flex-direction: row !important;
+
+                                .img-container {
+                                    position: relative !important;
+                                    overflow: hidden !important;
+                                    img {
+                                        display: inline !important;
+                                        margin: 0 auto !important;
+                                        height: 100% !important;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -275,6 +299,8 @@
                     flex-direction: row;
 
                     .card {
+                        display: flex;
+                        flex-direction: column;
                         flex-shrink: 0;
                         margin: auto 12px;
                         margin-top: 30px;
@@ -282,6 +308,8 @@
                         flex: 1;
 
                         .img-container {
+                            flex-basis: 50%;
+                            flex-shrink: 0;
                             display: flex;
                             flex-direction: column;
                             justify-content: center;
@@ -302,12 +330,14 @@
                         }
                         .text-container {
                             display: flex;
+                            flex-basis: 50%;
+                            flex-shrink: 0;
                             word-break: break-all;
                             min-height: 150px;
                             width: auto;
                             background: #98c9ec;
                             color: white;
-                            padding: 10px;
+                            // padding: 10px;
                         }
                     }
                 }
@@ -322,22 +352,29 @@
                 @media screen and (max-width: 600px) {
                     flex-direction: column !important;
                     align-items: flex-start !important;
+                    margin: 20px 20px 0px 20px !important;
 
+                    .img-container {
+                        margin: 0px 10px 0px 0px !important;
+                    }
+                    
                     .content {
                         flex-wrap: wrap;
                         margin: 10px 0px !important;
 
                         .items {
-                            margin: 0px 5px !important;
+                            margin: 3px 5px !important;
                         }
                     }
                 }
 
                 .img-container {
+                    width: 100%;
                     display: flex;
                     flex-direction: row;
                     align-items: center;
                     margin-right: 10px;
+                    margin: 10px 0px;
 
                     img {
                         width: auto;
