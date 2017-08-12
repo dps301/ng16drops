@@ -7,6 +7,7 @@ export const routes:Routes = [
   { path: '', component: FormComponent},
   { path: 'result', component: ResultComponent},
   { path: 'admin/user', component: UserComponent},
+  { path: 'result/:id', component: ResultComponent},
 ];
 
 export const Routing = RouterModule.forRoot(routes);

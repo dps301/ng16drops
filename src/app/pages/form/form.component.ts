@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { HttpService } from '../../services/http.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-form',
@@ -13,7 +14,7 @@ export class FormComponent implements OnInit {
   user: Array<any> = [];
   now: number = 0;
 
-  constructor(private http: HttpService, private cdRef: ChangeDetectorRef) { }
+  constructor(private http: HttpService, private cdRef: ChangeDetectorRef, private router: Router) { }
 
   ngOnInit() {
     this.http.get('/items')
@@ -75,7 +76,8 @@ export class FormComponent implements OnInit {
     this.http.post('/apply', {'user': this.userInfo, 'items': itemsArr})
     .subscribe(
       data => {
-        
+        console.log(data.json().userFormNo);
+        this.router.navigateByUrl('/result/' + data.json().userFormNo);
       }
     );
   }

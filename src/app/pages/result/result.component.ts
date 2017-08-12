@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpService } from '../../services/http.service';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-result',
@@ -9,12 +10,6 @@ import { HttpService } from '../../services/http.service';
 export class ResultComponent implements OnInit {
   barLabel: Array<any> = ["유수분관리", "민감관리", "손상관리", "노화관리", "탄력관리"];
   barAmt: Array<any> = [78, 74, 63, 79, 57];
-  cards: Array<any> = [
-    {image: "assets/images/icon_for_plants.png", content: "fdasfsdafdsafddddddddddddddddddddddddddddddddddsdsdsdsdsasffdasfsdafdsafddddddddddddddddddddddddddddddddddsdsdsdsdsasf", "imgText": "가자가자"},
-    {image: "assets/images/icon_for_berry.png", content: "fdasfsdafdsafddddddddddddddddddddddddddddddddddsdsdsdsdsasffdasfsdafdsafddddddddddddddddddddddddddddddddddsdsdsdsdsasf", "imgText": "가자가자"},
-    {image: "assets/images/icon_for_chemical.png", content: "fdasfsdafdsafddddddddddddddddddddddddddddddddddsdsdsdsdsasffdasfsdafdsafddddddddddddddddddddddddddddddddddsdsdsdsdsasf", "imgText": "가자가자"},
-    {image: "assets/images/icon_for_chemical2.png", content: "fdasfsdafdsafddddddddddddddddddddddddddddddddddsdsdsdsdsasffdasfsdafdsafddddddddddddddddddddddddddddddddddsdsdsdsdsasf", "imgText": "가자가자"},
-  ];
   warning: Array<any> = ["유수분관리", "민감관리", "손상관리", "노화관리", "탄력관리"];
   type = 'radar';
   data = {
@@ -52,19 +47,29 @@ export class ResultComponent implements OnInit {
       }
     }
   };
+  
   result: any = {};
   items: Array<any> = [];
+  id: number = 0;
 
-  constructor(private http: HttpService) { }
+  constructor(private http: HttpService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.http.get('/result/62')
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
+    this.http.get('/result/' + this.id)
     .subscribe(
       data => {
         this.result = data.json();
         this.items = this.result.item;
+        this.barAmt = this.result.g;
         console.log(this.result);
       }
     );
+  }
+
+  toInteger(val) {
+    return Math.floor(val);
   }
 }
