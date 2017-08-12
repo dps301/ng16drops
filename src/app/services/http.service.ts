@@ -13,7 +13,7 @@ export class HttpService {
 
     public post(url: string, body = {}, params = {}): Observable<Response> {
         var parameters = new URLSearchParams();
-        parameters.set('apikey', this.apikey);
+        // parameters.set('apikey', this.apikey);
         for (var key in params) {
             parameters.set(key, params[key] + "");
         }
@@ -23,7 +23,7 @@ export class HttpService {
 
     public put(url: string, body = {}, params = {}): Observable<Response> {
         var parameters = new URLSearchParams();
-        parameters.set('apikey', this.apikey);
+        // parameters.set('apikey', this.apikey);
         for (var key in params) {
             parameters.set(key, params[key] + "");
         }
@@ -33,7 +33,7 @@ export class HttpService {
 
     public delete(url: string, params = {}): Observable<Response> {
         var parameters = new URLSearchParams();
-        parameters.set('apikey', this.apikey);
+        // parameters.set('apikey', this.apikey);
         for (var key in params) {
             parameters.set(key, params[key] + "");
         }
@@ -43,7 +43,7 @@ export class HttpService {
 
     public get(url: String, params = {}): Observable<Response> {
         var parameters = new URLSearchParams();
-        parameters.set('apikey', this.apikey);
+        // parameters.set('apikey', this.apikey);
         for (var key in params) {
             parameters.set(key, params[key] + "");
         }

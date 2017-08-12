@@ -1,0 +1,13 @@
+<div *ngFor="let item of group; let i = index">
+  <h2 (click)="selectGroup(i)" class="cursor">
+    {{item.title}}&nbsp;{{item.descript}}
+  </h2>
+  <ng-container *ngIf="i == selectedGroupIdx">
+    <div *ngFor="let item of condition">
+      {{item.name}}
+      <input type="" [(ngModel)]="item.min">
+      <input type="" [(ngModel)]="item.max">
+      <button type="" (click)="saveCondition(item)">확인</button>
+    </div>
+  </ng-container>
+</div>

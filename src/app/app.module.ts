@@ -16,6 +16,7 @@ import { FormInputComponent } from './components/form-input/form-input.component
 import { ChartModule } from 'angular2-chartjs';
 import { UserComponent } from './pages-admin/user/user.component';
 import { AdminResultComponent } from './pages-admin/admin-result/admin-result.component';
+import { ItemComponent } from './pages-admin/item/item.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AdminResultComponent } from './pages-admin/admin-result/admin-result.co
     FormInputComponent,
     UserComponent,
     AdminResultComponent,
+    ItemComponent,
   ],
   imports: [
     BrowserModule,
