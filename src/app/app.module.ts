@@ -14,6 +14,7 @@ import { FormCheckComponent } from './components/form-check/form-check.component
 import { FormInputComponent } from './components/form-input/form-input.component';
 
 import { ChartModule } from 'angular2-chartjs';
+import { UserComponent } from './pages-admin/user/user.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ChartModule } from 'angular2-chartjs';
     FormSelectComponent,
     FormCheckComponent,
     FormInputComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
