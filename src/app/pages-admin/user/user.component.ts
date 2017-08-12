@@ -8,8 +8,7 @@ import { HttpService } from '../../services/http.service';
 })
 export class UserComponent implements OnInit {
 
-    result: any = {};
-    items: Array<any> = [];
+    result: any = [];
     constructor(private http: HttpService) { }
     ngOnInit() {
     this.http.get('/admin/user')
