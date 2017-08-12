@@ -1,6 +1,6 @@
 <table>
-  <th>
-    <td>no</td>
+  <thead>
+    <td>번호</td>
     <td>이름</td>
     <td>결과명</td>
     <td>결과1</td>
@@ -8,5 +8,18 @@
     <td>결과3</td>
     <td>결과4</td>
     <td>결과5</td>
-  </th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of result">
+      <td>{{item.formNo}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.resultName}}</td>
+      <td>{{item.con1}}</td>
+      <td>{{item.con2}}</td>
+      <td>{{item.con3}}</td>
+      <td>{{item.con4}}</td>
+      <td>{{item.con5}}</td>
+    </tr>
+  </tbody>
 </table>
+
