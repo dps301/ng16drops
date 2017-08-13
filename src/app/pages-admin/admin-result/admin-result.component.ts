@@ -11,6 +11,7 @@ export class AdminResultComponent implements OnInit {
 
   result: any = [];
   info: any = [];
+  detail: any = [];
 
   constructor(private http: HttpService) { }
 
@@ -31,6 +32,7 @@ export class AdminResultComponent implements OnInit {
           .subscribe(
               data => {
                 this.info = data.json().item;
+                this.detail = data.json();
                 console.log(this.info)
               }
           );
@@ -45,6 +47,20 @@ export class AdminResultComponent implements OnInit {
   }
   save2(item){
       this.http.put('/admin/result/detail',
+          {
+            result_manage_no:item.result_manage_no,
+            title:item.title,
+            con:item.con,
+            icon_url:item.icon_url
+          })
+          .subscribe(
+              data => {
+                this.load();
+              }
+          );
+  }
+  save3(item){
+      this.http.put('/admin/result/info',
           {
             result_manage_no:item.result_manage_no,
             title:item.title,
