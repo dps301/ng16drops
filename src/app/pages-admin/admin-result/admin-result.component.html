@@ -1,0 +1,44 @@
+<table>
+  <thead>
+  <td>번호</td>
+  <td>이름</td>
+  <td>결과1</td>
+  <td>결과2</td>
+  <td>결과3</td>
+  <td>결과4</td>
+  <td>결과5</td>
+  <td>결과6</td>
+  <td>자세히</td>
+  <td>이름 수정</td>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of result">
+    <td>{{item.resultNo}}</td>
+    <td><input [(ngModel)]="item.name" ></td>
+    <td>{{item.an1}}</td>
+    <td>{{item.an2}}</td>
+    <td>{{item.an3}}</td>
+    <td>{{item.an4}}</td>
+    <td>{{item.an5}}</td>
+    <td>{{item.an6}}</td>
+    <td><button (click)="find(item.resultNo)">O</button></td>
+    <td><button (click)="save(item.resultNo,item.name)">O</button></td>
+  </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+  <td>제목</td>
+  <td>내용</td>
+  <td>아이콘</td>
+  <td>수정</td>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of info">
+    <td><input [(ngModel)]="item.title"></td>
+    <td><input [(ngModel)]="item.con"></td>
+    <td><input [(ngModel)]="item.icon_url"></td>
+    <td><button (click)="save2(item)">수정</button></td>
+  </tr>
+  </tbody>
+</table>
