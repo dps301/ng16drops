@@ -23,7 +23,7 @@
           <button type="" (click)="getItemDetail(item.itemNo)">상세</button>
           <button type="" (click)="saveItem(item)">저장</button>
         </div>
-        <ng-container *ngIf="item.itemNo == selectedItemDetail.itemNo">
+        <ng-container *ngIf="selectedItemDetail && item.itemNo == selectedItemDetail.itemNo">
           <div *ngFor="let item of selectedItemDetail.item">
             content <input type="text" [(ngModel)]="item.content"> score <input type="text" [(ngModel)]="item.score">
           </div>
