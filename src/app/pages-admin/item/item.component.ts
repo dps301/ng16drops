@@ -10,6 +10,8 @@ export class ItemComponent implements OnInit {
   selectedGroupIdx: number = -1;
   group: Array<any> = [];
   condition: Array<any> = [];
+  items: Array<any> = [];
+  selectedItemDetail: any;
 
   constructor(private http: HttpService) { }
 
@@ -25,10 +27,21 @@ export class ItemComponent implements OnInit {
       }
     );
   }
+  
+  saveGroup(item) {
+    this.http.put('/admin/group', {"groupNo": item.groupNo, "title": item.title, "descript": item.descript, "offset": item.offset, "mod": item.mod, "mul": item.mul})
+    .subscribe(
+      data => {
+        console.log('group saved');
+        this.getGroup();
+      }
+    );
+  }
 
   selectGroup(idx) {
     this.selectedGroupIdx = idx;
     this.getCondition();
+    this.getItem();
   }
 
   getCondition() {
@@ -46,6 +59,46 @@ export class ItemComponent implements OnInit {
       data => {
         console.log('condition saved');
         this.getCondition();
+      }
+    );
+  }
+
+  getItem() {
+    this.http.get('/admin/item', {"groupNo": this.group[this.selectedGroupIdx].groupNo})
+    .subscribe(
+      data => {
+        this.items = data.json();
+      }
+    );
+  }
+
+  saveItem(item) {
+    item.groupNo = this.group[this.selectedGroupIdx].groupNo;
+    console.log(item);
+    this.http.put('/admin/item', item)
+    .subscribe(
+      data => {
+        console.log('item saved');
+        this.getItem();
+      }
+    );
+  }
+
+  getItemDetail(itemNo) {
+    this.http.get('/admin/item/detail', {itemNo: itemNo})
+    .subscribe(
+      data => {
+        console.log(data.json());
+        this.selectedItemDetail = data.json();
+      }
+    );
+  }
+  
+  saveItemDetail() {
+    this.http.put('/admin/item/detail', this.selectedItemDetail)
+    .subscribe(
+      data => {
+        console.log(data.json());
       }
     );
   }
