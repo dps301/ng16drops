@@ -45,6 +45,9 @@ export class ItemComponent implements OnInit {
   }
 
   getCondition() {
+    console.log(this.group);
+    console.log(this.selectedGroupIdx);
+    
     this.http.get('/admin/group/condition', {"groupNo": this.group[this.selectedGroupIdx].groupNo})
     .subscribe(
       data => {
