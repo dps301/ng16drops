@@ -1,13 +1,34 @@
 <div *ngFor="let item of group; let i = index">
-  <h2 (click)="selectGroup(i)" class="cursor">
-    {{item.title}}&nbsp;{{item.descript}}
-  </h2>
+  <h2>{{item.title}}<button type="" (click)="selectGroup(i)">상세</button></h2>
+  <div>
+    title <input type="" name="" value="" [(ngModel)]="item.title"> descript <input type="" name="" value="" [(ngModel)]="item.descript"> offset <input type="text" [(ngModel)]="item.offset"> mul <input type="text" [(ngModel)]="item.mul">
+    mod <input type="text" [(ngModel)]="item.mod"> <button type="" (click)="saveGroup(item)">저장</button>
+  </div>
   <ng-container *ngIf="i == selectedGroupIdx">
-    <div *ngFor="let item of condition">
-      {{item.name}}
-      <input type="" [(ngModel)]="item.min">
-      <input type="" [(ngModel)]="item.max">
-      <button type="" (click)="saveCondition(item)">확인</button>
-    </div>
+      <h1>condition</h1>
+      <div *ngFor="let item of condition">
+        {{item.name}}
+        min <input type="" [(ngModel)]="item.min">
+        max <input type="" [(ngModel)]="item.max">
+        <button type="" (click)="saveCondition(item)">저장</button>
+      </div>
+      <h1>items</h1>
+      <div *ngFor="let item of items">
+        <div>
+          title <input type="text" [(ngModel)]="item.title">
+          type <input type="text" [(ngModel)]="item.type">
+          number <input type="text" [(ngModel)]="item.number">
+          limit <input type="text" [(ngModel)]="item.limit">
+          use_yn <input type="text" [(ngModel)]="item.use_yn">
+          <button type="" (click)="getItemDetail(item.itemNo)">상세</button>
+          <button type="" (click)="saveItem(item)">저장</button>
+        </div>
+        <ng-container *ngIf="item.itemNo == selectedItemDetail.itemNo">
+          <div *ngFor="let item of selectedItemDetail.item">
+            content <input type="text" [(ngModel)]="item.content"> score <input type="text" [(ngModel)]="item.score">
+          </div>
+          <button (click)="saveItemDetail()">저장</button>
+        </ng-container>
+      </div>
   </ng-container>
 </div>
