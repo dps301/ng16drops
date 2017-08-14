@@ -62,10 +62,16 @@ export class AdminResultComponent implements OnInit {
   save3(item){
       this.http.put('/admin/result/info',
           {
-            result_manage_no:item.result_manage_no,
-            title:item.title,
-            con:item.con,
-            icon_url:item.icon_url
+            resultNo:item.form_result_no,
+            add:item.add,
+            con1:item.con1,
+            con1_descript:item.con1_descript,
+            con2:item.con2,
+            con2_descript:item.con2_descript,
+            con3:item.con3,
+            con3_descript:item.con3_descript,
+            con4:item.con4,
+            con4_descript:item.con4_descript
           })
           .subscribe(
               data => {

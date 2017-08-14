@@ -36,7 +36,7 @@
   <tbody>
   <tr *ngFor="let item of info">
     <td><input [(ngModel)]="item.title"></td>
-    <td><input [(ngModel)]="item.con"></td>
+    <td><input width="50%" height="200px" [(ngModel)]="item.con"></td>
     <td><input [(ngModel)]="item.icon_url"></td>
     <td><button (click)="save2(item)">수정</button></td>
   </tr>
@@ -44,28 +44,36 @@
 </table>
 <table>
   <thead>
+  <td>번호</td>
   <td>제목</td>
   <td>내용</td>
-  <td>아이콘</td>
-  <td>수정</td>
+  <td>이미지</td>
   </thead>
   <tbody>
   <tr>
+    <td>설명 :</td>
+    <td> <input [(ngModel)]="detail.add"></td>
+  </tr>
+  <tr>
+    <td>1</td>
     <td><input [(ngModel)]="detail.con1"></td>
     <td><input [(ngModel)]="detail.con1_descript"></td>
     <td><input [(ngModel)]="detail.con1_img"></td>
   </tr>
   <tr>
+    <td>2</td>
     <td><input [(ngModel)]="detail.con2"></td>
     <td><input [(ngModel)]="detail.con2_descript"></td>
     <td><input [(ngModel)]="detail.con2_img"></td>
   </tr>
   <tr>
+    <td>3</td>
     <td><input [(ngModel)]="detail.con3"></td>
     <td><input [(ngModel)]="detail.con3_descript"></td>
     <td><input [(ngModel)]="detail.con3_img"></td>
   </tr>
   <tr>
+    <td>4</td>
     <td><input [(ngModel)]="detail.con4"></td>
     <td><input [(ngModel)]="detail.con4_descript"></td>
     <td><input [(ngModel)]="detail.con4_img"></td>
