@@ -118,14 +118,17 @@
                         flex-direction: column;
                         align-items: center;
 
-                        .bar-graph {
-                            order: 2;
-                            margin-left: 0;
-                            width: 80%;
-                            width: 100%;
+                        .bar-container {
+                            order: 1 !important;
+                            
+                            .bar-graph {
+                                margin-left: 0;
+                                width: 100%;
+                            }
                         }
                         .radar {
-                            order: 1;
+                            order: 0 !important;
+                            width: 100%;
                         }
                     }
 
@@ -133,39 +136,51 @@
                         padding: 30px 10px;
                     }
 
-                    .bar-graph {
+                    .bar-container {
                         flex-shrink: 0;
                         flex-grow: 1;
 
-                        .item {
-                            width: 100%;
-                            display: flex;
-                            flex-direction: row;
-                            margin: 13px 0px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        align-self: stretch;
 
-                            .item-title {
-                                flex-basis: 20%;
-                                word-break: normal;
-                            }
-                            .right {
-                                margin-left: 20px;
-                                align-self: center;
-                            }
-                            .progress-container {
-                                flex-grow: 1;
-                                background: #f3f3f4;
-                                width: 200px;
-                                height: inherit;
-                                position: relative;
-
-                                .progress {
-                                    position: absolute;
-                                    left: 0%;
-                                    top: 0%;
-                                    bottom: 0%;
-                                    background: #98c9ec;
-                                    width: 50px;
-                                    height: 100%;
+                        .bar-text {
+                            flex-grow: 1;
+                            color: black;
+                            margin: 20px 0px;
+                        }
+                        .bar-graph {
+                            .item {
+                                width: 100%;
+                                display: flex;
+                                flex-direction: row;
+                                margin: 13px 0px;
+    
+                                .item-title {
+                                    flex-basis: 20%;
+                                    word-break: normal;
+                                }
+                                .right {
+                                    margin-left: 20px;
+                                    align-self: center;
+                                }
+                                .progress-container {
+                                    flex-grow: 1;
+                                    background: #f3f3f4;
+                                    width: 200px;
+                                    height: inherit;
+                                    position: relative;
+    
+                                    .progress {
+                                        position: absolute;
+                                        left: 0%;
+                                        top: 0%;
+                                        bottom: 0%;
+                                        background: #98c9ec;
+                                        width: 50px;
+                                        height: 100%;
+                                    }
                                 }
                             }
                         }
@@ -234,6 +249,7 @@
                         align-items: center;
                         flex-basis: 25%;
                         flex-shrink: 0;
+                        
 
                         img {
                             width: 40px;
@@ -319,7 +335,8 @@
                             overflow: hidden;
 
                             img {
-                                height: auto;
+                                object-fit: cover;
+                                // height: 100%;
                                 width: 100%;
                             }
                             .img-text {

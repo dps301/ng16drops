@@ -5,7 +5,7 @@ import { Observable } from "rxjs/Observable";
 @Injectable()
 export class HttpService {
     constructor(private http: Http) { }
-    public server_addr = 'http://api.bluelab.me:3100';
+    public server_addr = 'http://form16.cafe24app.com/v';
 
     headers = new Headers({ 'Content-Type': 'application/json' });
     options = new RequestOptions({ headers: this.headers });

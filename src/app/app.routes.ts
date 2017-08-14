@@ -5,7 +5,7 @@ import { AdminLayoutComponent } from './pages-admin/admin.layout.component';
 
 export const routes:Routes = [
   { path: '', component: FormComponent},
-  { path: 'result', component: ResultComponent},
+  { path: 'result/:id', component: ResultComponent},
   { path: 'admin', component: AdminLayoutComponent, loadChildren: './pages-admin/admin.module#AdminModule'},
 ];
 

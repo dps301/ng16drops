@@ -23,17 +23,22 @@
           <span>{{result.name}}</span>
         </div>
         <div class="graph-container">
-          <div class="bar-graph">
-            <div class="item" *ngFor="let item of barLabel; let idx = index">
-              <div class="item-title">
-                {{item}}
-              </div>
-              <div class="progress-container">
-                <div class="progress" [ngStyle]="{'width': barAmt[idx]+'%'}">
+          <div class="bar-container">
+            <div class="bar-text">
+              {{result.add}}
+            </div>
+            <div class="bar-graph">
+              <div class="item" *ngFor="let item of barLabel; let idx = index">
+                <div class="item-title">
+                  {{item}}
                 </div>
-              </div>
-              <div class="right">
-                {{toInteger(barAmt[idx])}}
+                <div class="progress-container">
+                  <div class="progress" [ngStyle]="{'width': barAmt[idx]+'%'}">
+                  </div>
+                </div>
+                <div class="right">
+                  {{toInteger(barAmt[idx])}}
+                </div>
               </div>
             </div>
           </div>
@@ -71,9 +76,6 @@
           <div class="card">
             <div class="img-container">
               <img [src]="result.con1_img" alt="">
-              <!-- <div class="img-text">
-                {{result.con1}}
-              </div> -->
             </div>
             <div class="text-container">
               {{result.con1_descript}}
@@ -84,9 +86,6 @@
           <div class="card">
             <div class="img-container">
               <img [src]="result.con2_img" alt="">
-              <!-- <div class="img-text">
-                {{result.con2}}
-              </div> -->
             </div>
             <div class="text-container">
               {{result.con2_descript}}
@@ -97,9 +96,6 @@
           <div class="card">
             <div class="img-container">
               <img [src]="result.con3_img" alt="">
-              <!-- <div class="img-text">
-                {{result.con3}}
-              </div> -->
             </div>
             <div class="text-container">
               {{result.con3_descript}}
@@ -110,9 +106,6 @@
           <div class="card">
             <div class="img-container">
               <img [src]="result.con4_img" alt="">
-              <!-- <div class="img-text">
-                {{result.con4}}
-              </div> -->
             </div>
             <div class="text-container">
               {{result.con4_descript}}
