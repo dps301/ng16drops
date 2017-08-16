@@ -119,11 +119,14 @@
           <div class="warning-title">주의해야 할 성분</div>
         </div>
         <div class="content">
-          <div class="items" *ngFor="let item of warning">
-            {{item}}
+          <div class="items">
+            {{result.caution}}
           </div>
         </div>
       </div>
+    </div>
+    <div class="shop-link" (click)="goShop()">
+      제품 구매하러 바로가기
     </div>
   </div>
 </div>

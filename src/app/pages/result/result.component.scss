@@ -96,6 +96,8 @@
             }
         }
         .graph {
+            margin-top: 10px;
+            
             .graph-content {
                 .type-name {
                     border-bottom: 1px solid black;
@@ -274,7 +276,7 @@
             }
         }
         .recommend {
-            padding-bottom: 80px;
+            padding-bottom: 50px;
 
             .card-container {
                 display: flex;
@@ -348,7 +350,6 @@
                         .text-container {
                             display: flex;
                             flex-basis: 50%;
-                            flex-shrink: 0;
                             word-break: break-all;
                             min-height: 150px;
                             width: auto;
@@ -411,6 +412,23 @@
                         margin-left: 10px;
                     }
                 }
+            }
+        }
+        .shop-link {
+            width: 40%;
+            margin: auto;
+            margin-bottom: 50px;
+            background: #4097cc;
+            color: white;
+            text-align: center;
+            padding: 30px 50px;
+            font-size: 1.3rem;
+            border-radius: 10px;
+            box-shadow: 5px 4px 16px 0px rgba(0, 0, 0, 0.25);
+
+            @media screen and (max-width: 600px) {
+                padding: 20px 50px;
+                font-size: 1rem;
             }
         }
     }

@@ -8,7 +8,7 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ['./result.component.scss']
 })
 export class ResultComponent implements OnInit {
-  barLabel: Array<any> = ["유수분관리", "민감관리", "손상관리", "노화관리", "탄력관리"];
+  barLabel: Array<any> = ["유수분관리", "민감관리", "손상관리", "탄력관리", "노화관리"];
   barAmt: Array<any> = [78, 74, 63, 79, 57];
   warning: Array<any> = ["유수분관리", "민감관리", "손상관리", "노화관리", "탄력관리"];
   type = 'radar';
@@ -34,7 +34,6 @@ export class ResultComponent implements OnInit {
       }
     }
   };
-  
   result: any = {};
   items: Array<any> = [];
   id: number = 0;
@@ -73,5 +72,9 @@ export class ResultComponent implements OnInit {
 
   toInteger(val) {
     return Math.floor(val);
+  }
+
+  goShop() {
+    window.open(this.result.link, '_system')
   }
 }
