@@ -24,8 +24,8 @@
     </tr>
   </tbody>
 </table>
+<pagenation [(pageNo)]="pageNo" [(pageSize)]="pageSize" [(totalSize)]="totalSize" (update)="search($event)"></pagenation>
 <div *ngFor="let item of info">{{item.title}} : {{item.answer}}</div>
-
 <table>
   <thead>
   <td>제목</td>

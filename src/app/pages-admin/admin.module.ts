@@ -7,6 +7,7 @@ import { Routing } from "./admin.routes";
 import { AdminLayoutComponent } from './admin.layout.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from "@angular/common";
+import { PageNationComponent } from '../components/pagenation/pagenation';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { CommonModule } from "@angular/common";
     UserComponent,
     AdminResultComponent,
     ItemComponent,
+    PageNationComponent
   ],
   imports: [
     Routing,

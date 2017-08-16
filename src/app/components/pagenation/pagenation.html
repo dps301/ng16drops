@@ -1,0 +1,11 @@
+<div class="pagenation-container" [ngClass]="getStyle()">
+    <div class="col-xs-1 page-btn all-center" (click)="pagePM('-')" *ngIf="pageNo > 10">
+        <
+    </div>
+    <div class="col-xs-1 page-btn all-center" *ngFor="let item of showedPageArr" (click)="goPage(item)" [ngClass]="{selected: pageNo == item}">
+        {{item}}
+    </div>
+    <div class="col-xs-1 page-btn all-center" (click)="pagePM('+')" *ngIf="pageArr.length != showedPageArr[showedPageArr.length - 1]">
+        >
+    </div>
+</div>

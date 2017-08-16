@@ -8,7 +8,7 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ['./result.component.scss']
 })
 export class ResultComponent implements OnInit {
-  barLabel: Array<any> = ["유수분도", "민감도", "색소침착도", "탄력도", "노화도"];
+  barLabel: Array<any> = ["유수분관리", "민감관리", "손상관리", "노화관리", "탄력관리"];
   barAmt: Array<any> = [78, 74, 63, 79, 57];
   warning: Array<any> = ["유수분관리", "민감관리", "손상관리", "노화관리", "탄력관리"];
   type = 'radar';
@@ -56,7 +56,7 @@ export class ResultComponent implements OnInit {
           datasets: [
             {
               label: "",
-              backgroundColor: 'rgba(152, 201, 236, 1)',
+              backgroundColor: 'rgba(152, 201, 236, 0.5)',
               borderColor: 'rgba(152, 201, 236, 1)',
               pointBackgroundColor: 'rgba(152, 201, 236, 0)',
               pointBorderColor: 'rgba(152, 201, 236, 0)',

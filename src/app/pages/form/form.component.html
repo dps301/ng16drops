@@ -1,7 +1,7 @@
 <div class="container">
   <div class="header default-bg-color">
     <div class="desktop">
-      <div [class.now]="now == 0" class="title-item default-text-color none-active">
+      <!-- <div [class.now]="now == 0" class="title-item default-text-color none-active">
         <div class="title-text">
           <div class="index">
             STEP.1
@@ -11,12 +11,12 @@
           </div>
         </div>
       </div>
-      <img src="assets/images/abovebar.png" alt="">
+      <img src="assets/images/abovebar.png" alt=""> -->
       <ng-container *ngFor="let item of items; let isFirst = first; let isLast = last; let i = index;">
         <div [class.now]="now == (i + 1)" class="title-item default-text-color none-active">
           <div class="title-text">
             <div class="index">
-              STEP.{{i + 2}}
+              STEP.{{i + 1}}
             </div>
             <div class="content">
               {{item.title}}     
@@ -27,10 +27,10 @@
       </ng-container>
     </div>
     <div class="mobile">
-      <div [class.now]="now == 0" class="title default-text-color none-active">
+      <!-- <div [class.now]="now == 0" class="title default-text-color none-active">
         <div class="index">STEP.1</div>
         <div class="content">기본정보</div>
-      </div>
+      </div> -->
       <div [class.now]="now == (i + 1)" class="title default-text-color none-active" *ngFor="let item of items; let isFirst = first; let isLast = last; let i = index;">
         <div class="index">STEP.{{i + 2}}</div>
         <div class="content">{{item.title}}</div>
