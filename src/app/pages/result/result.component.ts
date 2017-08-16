@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { HttpService } from '../../services/http.service';
 import { ActivatedRoute } from "@angular/router";
 
@@ -8,24 +8,11 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ['./result.component.scss']
 })
 export class ResultComponent implements OnInit {
-  barLabel: Array<any> = ["유수분관리", "민감관리", "손상관리", "노화관리", "탄력관리"];
+  barLabel: Array<any> = ["유수분도", "민감도", "색소침착도", "탄력도", "노화도"];
   barAmt: Array<any> = [78, 74, 63, 79, 57];
   warning: Array<any> = ["유수분관리", "민감관리", "손상관리", "노화관리", "탄력관리"];
   type = 'radar';
-  data = {
-    labels: this.barLabel,
-    datasets: [
-      {
-        label: "",
-        backgroundColor: 'rgba(152, 201, 236, 1)',
-        borderColor: 'rgba(152, 201, 236, 1)',
-        pointBackgroundColor: 'rgba(152, 201, 236, 0)',
-        pointBorderColor: 'rgba(152, 201, 236, 0)',
-        data: this.barAmt,
-        fill: true,
-      }
-    ]
-  };
+  data = {};
   options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -52,7 +39,7 @@ export class ResultComponent implements OnInit {
   items: Array<any> = [];
   id: number = 0;
 
-  constructor(private http: HttpService, private route: ActivatedRoute) { }
+  constructor(private http: HttpService, private route: ActivatedRoute, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -64,6 +51,21 @@ export class ResultComponent implements OnInit {
         this.result = data.json();
         this.items = this.result.item;
         this.barAmt = this.result.g;
+        this.data = {
+          labels: this.barLabel,
+          datasets: [
+            {
+              label: "",
+              backgroundColor: 'rgba(152, 201, 236, 1)',
+              borderColor: 'rgba(152, 201, 236, 1)',
+              pointBackgroundColor: 'rgba(152, 201, 236, 0)',
+              pointBorderColor: 'rgba(152, 201, 236, 0)',
+              data: this.barAmt,
+              fill: true,
+            }
+          ]
+        };
+        this.cdRef.detectChanges();
         console.log(this.result);
       }
     );
