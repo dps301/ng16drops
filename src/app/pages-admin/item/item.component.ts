@@ -86,6 +86,7 @@ export class ItemComponent implements OnInit {
       data => {
         console.log('item saved');
         this.getItem();
+        this.newItem = {title: '', type: '', number: '', limit: '', use_yn: ''};
       }
     );
   }
@@ -114,12 +115,13 @@ export class ItemComponent implements OnInit {
   }
 
   addItemDetail() {
-    this.selectedItemDetail = this.selectedItemNo;
-    this.http.put('/admin/item/detail', this.selectedItemDetail)
+    this.newItemDetail.itemNo = this.selectedItemNo;
+    this.http.post('/admin/item/detail', this.newItemDetail)
     .subscribe(
       data => {
         console.log(data.json());
         this.getItemDetail(this.selectedItemNo);
+        this.newItemDetail = {content: '', score: ''};
       }
     );
   }
