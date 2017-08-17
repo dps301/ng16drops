@@ -11,7 +11,10 @@ export class ItemComponent implements OnInit {
   group: Array<any> = [];
   condition: Array<any> = [];
   items: Array<any> = [];
+  newItem: any = {title: '', type: '', number: '', limit: '', use_yn: ''};
+  newItemDetail: any = {content: '', score: ''};
   selectedItemDetail: any;
+  selectedItemNo: number = -1;
 
   constructor(private http: HttpService) { }
 
@@ -75,6 +78,18 @@ export class ItemComponent implements OnInit {
     );
   }
 
+  addItem() {
+    this.newItem.groupNo = this.group[this.selectedGroupIdx].groupNo;
+    console.log(this.newItem);
+    this.http.post('/admin/item', this.newItem)
+    .subscribe(
+      data => {
+        console.log('item saved');
+        this.getItem();
+      }
+    );
+  }
+
   saveItem(item) {
     item.groupNo = this.group[this.selectedGroupIdx].groupNo;
     console.log(item);
@@ -88,11 +103,23 @@ export class ItemComponent implements OnInit {
   }
 
   getItemDetail(itemNo) {
+    this.selectedItemNo = itemNo;
     this.http.get('/admin/item/detail', {itemNo: itemNo})
     .subscribe(
       data => {
         console.log(data.json());
         this.selectedItemDetail = data.json();
+      }
+    );
+  }
+
+  addItemDetail() {
+    this.selectedItemDetail = this.selectedItemNo;
+    this.http.put('/admin/item/detail', this.selectedItemDetail)
+    .subscribe(
+      data => {
+        console.log(data.json());
+        this.getItemDetail(this.selectedItemNo);
       }
     );
   }
