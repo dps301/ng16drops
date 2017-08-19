@@ -105,4 +105,12 @@ export class ItemComponent implements OnInit {
       }
     );
   }
+  deleteSelect(no){
+    this.http.delete('/admin/item/detail?selectItemNo='+no)
+        .subscribe(
+            data => {
+              console.log(data.json());
+            }
+        );
+  }
 }

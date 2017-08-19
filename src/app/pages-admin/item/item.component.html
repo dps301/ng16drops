@@ -26,6 +26,7 @@
         <ng-container *ngIf="selectedItemDetail && item.itemNo == selectedItemDetail.itemNo">
           <div *ngFor="let item of selectedItemDetail.item">
             content <input type="text" [(ngModel)]="item.content"> score <input type="text" [(ngModel)]="item.score">
+            <button (click)="deleteSelect(item.selectItemNo)">삭제</button>
           </div>
           <button (click)="saveItemDetail()">저장</button>
         </ng-container>
