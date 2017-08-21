@@ -1,0 +1,44 @@
+<table>
+  <thead>
+    <td>번호</td>
+    <td>이름</td>
+    <td>결과명</td>
+    <td>결과1</td>
+    <td>결과2</td>
+    <td>결과3</td>
+    <td>결과4</td>
+    <td>결과5</td>
+    <td>자세히</td>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of result">
+      <td>{{item.formNo}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.resultName}}</td>
+      <td>{{item.con1}}</td>
+      <td>{{item.con2}}</td>
+      <td>{{item.con3}}</td>
+      <td>{{item.con4}}</td>
+      <td>{{item.con5}}</td>
+      <td><button (click)="find(item.formNo)">O</button></td>
+    </tr>
+  </tbody>
+</table>
+<pagenation [(pageNo)]="pageNo" [(pageSize)]="pageSize" [(totalSize)]="totalSize" (update)="search($event)"></pagenation>
+<div *ngFor="let item of info">{{item.title}} : {{item.answer}}</div>
+<table>
+  <thead>
+  <td>제목</td>
+  <td>타입(0:텍스트,1:단일,2:멀티)</td>
+  <td>내용</td>
+  <td>점수</td>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of detail">
+    <td>{{item.title}}</td>
+    <td>{{item.type}}</td>
+    <td>{{item.content}}</td>
+    <td>{{item.score}}</td>
+  </tr>
+  </tbody>
+</table>

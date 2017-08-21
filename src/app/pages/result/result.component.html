@@ -1,13 +1,19 @@
 <div class="background result-default-bg-color">
   <div class="container">
-    <div class="welcome">
-      <div class="welcome-content">
-        <div>
-          당신의 피부타입은 입니다.
+    <!-- <div class="welcome">
+      <img class="background-img" src="assets/images/background.png" alt="">
+       <div class="welcome-content">
+        <div class="welcome-title">
+          당신의 피부타입은 {{result.name}} 입니다.
         </div>
-        {{result.descript}}
-      </div>
-    </div>
+        <div class="welcome-title-img">
+          <img [src]="result.main_img" alt="">
+        </div>
+        <div class="welcome-title-desc">
+          {{result.descript}}
+        </div>
+      </div> 
+    </div> -->
     <div class="graph">
       <div class="title">
         <img src="assets/images/check_for_title.png" alt="">당신의 피부 타입
@@ -17,23 +23,28 @@
           <span>{{result.name}}</span>
         </div>
         <div class="graph-container">
-          <div class="bar-graph">
-            <div class="item" *ngFor="let item of barLabel; let idx = index">
-              <div class="item-title">
-                {{item}}
-              </div>
-              <div class="progress-container">
-                <div class="progress" [ngStyle]="{'width': barAmt[idx]+'%'}">
+          <div class="bar-container">
+            <div class="bar-text">
+              {{result.add}}
+            </div>
+            <div class="bar-graph">
+              <div class="item" *ngFor="let item of barLabel; let idx = index">
+                <div class="item-title">
+                  {{item}}
                 </div>
-              </div>
-              <div class="item-title right">
-                {{barAmt[idx]}}
+                <div class="progress-container">
+                  <div class="progress" [ngStyle]="{'width': barAmt[idx]+'%'}">
+                  </div>
+                </div>
+                <div class="right">
+                  {{toInteger(barAmt[idx])}}
+                </div>
               </div>
             </div>
           </div>
           <div class="radar">
             <chart [type]="type" [data]="data" [options]="options"></chart>
-            <img class="type-img" src="assets/images/warning.png" alt="">
+            <!-- <img class="type-img" src="assets/images/warning.png" alt=""> -->
           </div>
         </div>
       </div>
@@ -44,9 +55,11 @@
       </div>
       <div class="step3-content">
         <div class="items" *ngFor="let item of items">
-          <img [src]="item.icon_url" alt="">
-          <div class="step-title">
-            {{item.title}}
+          <div class="img-container">
+            <img [src]="item.icon_url" alt="">
+            <div class="step-title">
+              {{item.title}}
+            </div>
           </div>
           <div class="step-content">
             {{item.con}}
@@ -58,61 +71,62 @@
       <div class="title">
         <img src="assets/images/check_for_title.png" alt="">내 피부에 맞는 성분
       </div>
-      <div class="recommend-content">
-        <div class="card">
-          <div class="img-container">
-            <img [src]="result.con1_img" alt="">
-            <div class="img-text">
-              {{result.con1}}
+      <div class="card-container">
+        <div class="recommend-content">
+          <div class="card">
+            <div class="img-container">
+              <img [src]="result.con1_img" alt="">
             </div>
-          </div>
-          <div class="text-container">
-            {{result.con1_descript}}
+            <div class="text-container">
+              {{result.con1_descript}}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="recommend-content">
-        <div class="card">
-          <div class="img-container">
-            <img [src]="result.con2_img" alt="">
-            <div class="img-text">
-              {{result.con2}}
+        <div class="recommend-content">
+          <div class="card">
+            <div class="img-container">
+              <img [src]="result.con2_img" alt="">
             </div>
-          </div>
-          <div class="text-container">
-            {{result.con2_descript}}
+            <div class="text-container">
+              {{result.con2_descript}}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="recommend-content">
-        <div class="card">
-          <div class="img-container">
-            <img [src]="result.con3_img" alt="">
-            <div class="img-text">
-              {{result.con3}}
+        <div class="recommend-content">
+          <div class="card">
+            <div class="img-container">
+              <img [src]="result.con3_img" alt="">
             </div>
-          </div>
-          <div class="text-container">
-            {{result.con3_descript}}
+            <div class="text-container">
+              {{result.con3_descript}}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="recommend-content">
-        <div class="card">
-          <div class="img-container">
-            <img [src]="result.con4_img" alt="">
-            <div class="img-text">
-              {{result.con4}}
+        <div class="recommend-content">
+          <div class="card">
+            <div class="img-container">
+              <img [src]="result.con4_img" alt="">
             </div>
-          </div>
-          <div class="text-container">
-            {{result.con4_descript}}
+            <div class="text-container">
+              {{result.con4_descript}}
+            </div>
           </div>
         </div>
       </div>
       <div class="warning">
-        <img src="assets/images/warning.png" alt=""> <span class="warning-title">주의해야 할 성분</span> <span class="content" *ngFor="let item of warning">{{item}}</span>
+        <div class="img-container">
+          <img src="assets/images/warning.png" alt="">
+          <div class="warning-title">주의해야 할 성분</div>
+        </div>
+        <div class="content">
+          <div class="items">
+            {{result.caution}}
+          </div>
+        </div>
       </div>
+    </div>
+    <div class="shop-link cursor" (click)="goShop()">
+      제품 구매하러 바로가기
     </div>
   </div>
 </div>

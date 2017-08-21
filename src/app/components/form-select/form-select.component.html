@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container" [ngClass]="{'passed': no != -1}">
   <div class="title">
     <span class="main">{{menu.title}}</span>
     <span class="sub" *ngIf="menu.descript">{{menu.descript}}</span>
   </div>
   <div class="content">
     <div class="form-item cursor" *ngFor="let item of menu.items;" [ngClass]="{'checked': item.no == no}" (click)="changeItemNo(item.no)" >
-      {{item.content}}
+      <span>{{item.content}}</span>
       <img *ngIf="item.no == no" src="assets/images/check.png" alt="">
     </div>
   </div>

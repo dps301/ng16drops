@@ -5,7 +5,7 @@ import { Observable } from "rxjs/Observable";
 @Injectable()
 export class HttpService {
     constructor(private http: Http) { }
-    public server_addr = 'http://api.bluelab.me';
+    public server_addr = 'http://form16.cafe24app.com/v';
 
     headers = new Headers({ 'Content-Type': 'application/json' });
     options = new RequestOptions({ headers: this.headers });
@@ -13,7 +13,7 @@ export class HttpService {
 
     public post(url: string, body = {}, params = {}): Observable<Response> {
         var parameters = new URLSearchParams();
-        parameters.set('apikey', this.apikey);
+        // parameters.set('apikey', this.apikey);
         for (var key in params) {
             parameters.set(key, params[key] + "");
         }
@@ -23,7 +23,7 @@ export class HttpService {
 
     public put(url: string, body = {}, params = {}): Observable<Response> {
         var parameters = new URLSearchParams();
-        parameters.set('apikey', this.apikey);
+        // parameters.set('apikey', this.apikey);
         for (var key in params) {
             parameters.set(key, params[key] + "");
         }
@@ -33,7 +33,7 @@ export class HttpService {
 
     public delete(url: string, params = {}): Observable<Response> {
         var parameters = new URLSearchParams();
-        parameters.set('apikey', this.apikey);
+        // parameters.set('apikey', this.apikey);
         for (var key in params) {
             parameters.set(key, params[key] + "");
         }
@@ -43,7 +43,7 @@ export class HttpService {
 
     public get(url: String, params = {}): Observable<Response> {
         var parameters = new URLSearchParams();
-        parameters.set('apikey', this.apikey);
+        // parameters.set('apikey', this.apikey);
         for (var key in params) {
             parameters.set(key, params[key] + "");
         }

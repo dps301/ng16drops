@@ -2,13 +2,15 @@
 @font-face { 
     font-family: "KoPub"; 
     src: url("assets/fonts/KoPubDotumMedium.woff") format('woff');
+    font-weight: 500;
 }
 
 html, body {
-    margin: 0px;
     height: 100%;
+    margin: 0px;
     font-family: 'KoPub';
     overflow-x: hidden;
+    overflow-y: scroll;
     word-break: keep-all;
 }
 

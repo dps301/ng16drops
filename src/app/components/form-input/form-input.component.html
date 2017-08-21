@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" [ngClass]="{'passed': inputVal.length > 0}">
   <div class="title">
     <pre class="main">{{menu.title}}</pre>
     <span class="sub" *ngIf="menu.descript">{{menu.descript}}</span>

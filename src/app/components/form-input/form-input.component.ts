@@ -8,6 +8,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class FormInputComponent implements OnInit {
   @Input() menu: any;
   @Input() arr: any;
+  @Input() index: number;
+  @Input() innerIndex: number;
   @Output() addAnswer: EventEmitter<any> = new EventEmitter();
 
   inputVal: string = "";
@@ -15,7 +17,7 @@ export class FormInputComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title, type: this.menu.type});
+    this.addAnswer.next({formItemNo: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title, type: this.menu.type, index: this.index, innerIndex: this.innerIndex});
   }
 
   getData() {
@@ -25,6 +27,6 @@ export class FormInputComponent implements OnInit {
   }
 
   inputChange() {
-    this.addAnswer.next({index: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title, type: this.menu.type});
+    this.addAnswer.next({formItemNo: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title, type: this.menu.type, index: this.index, innerIndex: this.innerIndex});
   }
 }

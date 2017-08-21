@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { HttpService } from '../../services/http.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-form',
@@ -8,25 +9,18 @@ import { HttpService } from '../../services/http.service';
 })
 export class FormComponent implements OnInit {
   items: Array<any> = [];
-  userInfo: any = {};
-  answers: any = {};
+  userInfo: any = [];
+  answers: any = [[], [], [], [], []];
   user: Array<any> = [];
   now: number = 0;
-  total: number = 0;
-  itemsTotal: number = 0;
-  userTotal: number = 0;
 
-  constructor(private http: HttpService, private cdRef: ChangeDetectorRef) { }
+  constructor(private http: HttpService, private cdRef: ChangeDetectorRef, private router: Router) { }
 
   ngOnInit() {
     this.http.get('/items')
     .subscribe(
       data => {
         console.log(data.json());
-        this.total = data.json().total;
-        this.itemsTotal = data.json().itemsTotal;
-        this.userTotal = data.json().userTotal;
-        
         this.user = data.json().user;
         this.items = data.json().items;
       }
@@ -48,52 +42,42 @@ export class FormComponent implements OnInit {
       if(Object.keys(value.item).length === 0)
         this.userInfo[value.index].form_item_no = null;
       else
-        this.userInfo[value.index].form_item_no = value.index;
+        this.userInfo[value.index].form_item_no = value.formItemNo;
       this.userInfo[value.index].title = value.title;
       this.userInfo[value.index].type = value.type;
+      this.userInfo[value.index].index = value.index;
     }
     else {
-      this.answers[value.index] = Object.assign({}, value.item)
+      (this.answers[value.index])[value.innerIndex] = Object.assign({}, value.item)
       if(Object.keys(value.item).length === 0)
-        this.answers[value.index].form_item_no = null;
+        (this.answers[value.index])[value.innerIndex].form_item_no = null;
       else
-        this.answers[value.index].form_item_no = value.index;
-      this.answers[value.index].title = value.title;
-      this.answers[value.index].type = value.type;
+        (this.answers[value.index])[value.innerIndex].form_item_no = value.formItemNo;
+      (this.answers[value.index])[value.innerIndex].title = value.title;
+      (this.answers[value.index])[value.innerIndex].type = value.type;
+      (this.answers[value.index])[value.innerIndex].index = value.index;
     }
   }
 
   submit() {
-    var userArr = [];
-    for (var prop in this.userInfo) {
-      userArr.push(this.userInfo[prop]);
+    for(var i = 0; i < this.answers[4].length; i++) {
+      if(this.answers[4][i] && !this.answers[4][i].form_item_no) {
+        alert(this.answers[4][i].title + ' 항목을 확인해주세요.');
+        return ;
+      }
     }
 
     var itemsArr = [];
-    for (var prop in this.answers) {
-      itemsArr.push(this.answers[prop]);
+    for(var i = 0; i < this.answers.length; i++) {
+      itemsArr = itemsArr.concat(this.answers[i]);
     }
 
-    console.log({'user': userArr, 'items': itemsArr});
-    
-    for(var i = 0; i < userArr.length; i++) {
-      if(!userArr[i].form_item_no) {
-        alert(userArr[i].title + ' 항목을 확인해주세요.');
-        return ;
-      }
-    }
-
-    for(var i = 0; i < itemsArr.length; i++) {
-      if(!itemsArr[i].form_item_no) {
-        alert(itemsArr[i].title + ' 항목을 확인해주세요.');
-        return ;
-      }
-    }
-
-    this.http.post('/apply', {'user': userArr, 'items': itemsArr})
+    // console.log({'user': this.userInfo, 'items': itemsArr});
+    this.http.post('/apply', {'user': this.userInfo, 'items': itemsArr})
     .subscribe(
       data => {
-        
+        console.log(data.json().userFormNo);
+        this.router.navigateByUrl('/result/' + data.json().userFormNo);
       }
     );
   }
@@ -106,5 +90,25 @@ export class FormComponent implements OnInit {
     }
 
     return false;
+  }
+
+  userNext() {
+    for(var i = 0; i < this.userInfo.length; i++) {
+      if(!this.userInfo[i].form_item_no) {
+        alert(this.userInfo[i].title + ' 항목을 확인해주세요.');
+        return ;
+      }
+    }
+    this.now = 1;
+  }
+
+  next(idx) {
+    for(var i = 0; i < this.answers[idx - 1].length; i++) {
+      if(this.answers[idx - 1][i] && !this.answers[idx - 1][i].form_item_no) {
+        alert(this.answers[idx - 1][i].title + ' 항목을 확인해주세요.');
+        return ;
+      }
+    }
+    this.now = idx + 1;
   }
 }

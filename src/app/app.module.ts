@@ -14,10 +14,12 @@ import { FormCheckComponent } from './components/form-check/form-check.component
 import { FormInputComponent } from './components/form-input/form-input.component';
 
 import { ChartModule } from 'angular2-chartjs';
+import { AdminLayoutComponent } from './pages-admin/admin.layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AdminLayoutComponent,
     ResultComponent,
     FormComponent,
     FormSelectComponent,
@@ -29,7 +31,7 @@ import { ChartModule } from 'angular2-chartjs';
     FormsModule,
     HttpModule,
     Routing,
-    ChartModule
+    ChartModule,
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
