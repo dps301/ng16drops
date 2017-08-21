@@ -1,5 +1,4 @@
 .background {
-    font-weight: 500;
     padding: 26px 23px;
     color: #818285;
 
@@ -103,6 +102,7 @@
                     border-bottom: 1px solid black;
                     padding: 15px 0px;
                     color: black;
+                    font-weight: 600;
 
                     span {
                         margin-left: 35px;
@@ -121,6 +121,8 @@
                         align-items: center;
 
                         .bar-container {
+                            width: unset !important;
+                            flex-grow: 1;
                             order: 1 !important;
                             
                             .bar-graph {
@@ -139,8 +141,7 @@
                     }
 
                     .bar-container {
-                        flex-shrink: 0;
-                        flex-grow: 1;
+                        width: 55%;
 
                         display: flex;
                         flex-direction: column;
@@ -148,9 +149,9 @@
                         align-self: stretch;
 
                         .bar-text {
-                            flex-grow: 1;
                             color: black;
                             margin: 20px 0px;
+                            word-wrap: break-word
                         }
                         .bar-graph {
                             .item {
@@ -269,7 +270,7 @@
                     }
                     .step-content {
                         flex-grow: 1;
-                        line-height: 21px;
+                        line-height: 25px;
                         font-size: 16px;
                         word-break: keep-all;
                     }
@@ -302,6 +303,7 @@
                                 .img-container {
                                     position: relative !important;
                                     overflow: hidden !important;
+
                                     img {
                                         display: inline !important;
                                         margin: 0 auto !important;
@@ -357,6 +359,7 @@
                             background: #98c9ec;
                             color: white;
                             padding: 10px;
+                            line-height: 20px;
                         }
                     }
                 }

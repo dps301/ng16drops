@@ -15,6 +15,7 @@ import { FormInputComponent } from './components/form-input/form-input.component
 
 import { ChartModule } from 'angular2-chartjs';
 import { AdminLayoutComponent } from './pages-admin/admin.layout.component';
+import { SafeHtmlPipe } from './components/pipe.safehtml';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AdminLayoutComponent } from './pages-admin/admin.layout.component';
     FormSelectComponent,
     FormCheckComponent,
     FormInputComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,

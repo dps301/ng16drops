@@ -15,7 +15,7 @@ import { PageNationComponent } from '../components/pagenation/pagenation';
     UserComponent,
     AdminResultComponent,
     ItemComponent,
-    PageNationComponent
+    PageNationComponent,
   ],
   imports: [
     Routing,

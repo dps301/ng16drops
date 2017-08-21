@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
   selector: 'form-select',
@@ -15,12 +14,10 @@ export class FormSelectComponent implements OnInit {
   origin_title: string = "";
   no: number = -1;
 
-  constructor(private sanitizer:DomSanitizer) { }
+  constructor() { }
 
   ngOnInit() {
     this.origin_title = (this.menu.title).replace(/<\/?[^>]+(>|$)/g, "");
-    this.menu.title = this.sanitizer.bypassSecurityTrustHtml(this.menu.title);
-    
     this.addAnswer.next({formItemNo: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.origin_title, type: this.menu.type, index: this.index, innerIndex: this.innerIndex});
   }
 
