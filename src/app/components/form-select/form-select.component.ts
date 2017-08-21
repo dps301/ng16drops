@@ -12,15 +12,16 @@ export class FormSelectComponent implements OnInit {
   @Input() index: number;  
   @Input() innerIndex: number;
   @Output() addAnswer: EventEmitter<any> = new EventEmitter();
-
+  origin_title: string = "";
   no: number = -1;
 
   constructor(private sanitizer:DomSanitizer) { }
 
   ngOnInit() {
+    this.origin_title = (this.menu.title).replace(/<\/?[^>]+(>|$)/g, "");
     this.menu.title = this.sanitizer.bypassSecurityTrustHtml(this.menu.title);
     
-    this.addAnswer.next({formItemNo: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title, type: this.menu.type, index: this.index, innerIndex: this.innerIndex});
+    this.addAnswer.next({formItemNo: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.origin_title, type: this.menu.type, index: this.index, innerIndex: this.innerIndex});
   }
 
   getData() {
@@ -31,6 +32,6 @@ export class FormSelectComponent implements OnInit {
 
   changeItemNo(val) {
     this.no = val;
-    this.addAnswer.next({formItemNo: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.menu.title, type: this.menu.type, index: this.index, innerIndex: this.innerIndex});
+    this.addAnswer.next({formItemNo: this.menu.formItemNo, item: this.getData(), arr: this.arr, title: this.origin_title, type: this.menu.type, index: this.index, innerIndex: this.innerIndex});
   }
 }

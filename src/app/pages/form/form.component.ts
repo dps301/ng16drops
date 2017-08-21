@@ -93,6 +93,7 @@ export class FormComponent implements OnInit {
   }
 
   userNext() {
+    console.log(this.userInfo);
     for(var i = 0; i < this.userInfo.length; i++) {
       if(!this.userInfo[i].form_item_no) {
         alert(this.userInfo[i].title + ' 항목을 확인해주세요.');
