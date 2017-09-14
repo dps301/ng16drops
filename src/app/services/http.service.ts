@@ -6,6 +6,7 @@ import { Observable } from "rxjs/Observable";
 export class HttpService {
     constructor(private http: Http) { }
     public server_addr = 'http://form16.cafe24app.com/v';
+    // public server_addr = 'http://127.0.0.1:3100/v';
 
     headers = new Headers({ 'Content-Type': 'application/json' });
     options = new RequestOptions({ headers: this.headers });
