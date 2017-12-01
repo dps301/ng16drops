@@ -2,6 +2,9 @@
     padding: 26px 23px;
     color: #818285;
 
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+
     .title {
         display: flex;
         flex-direction: row;
@@ -21,7 +24,7 @@
     }
 
     .container {
-        overflow-y: scroll;
+        height: calc(100% + 1px);
         padding: 0px 15px;
         background: white;
         max-width: 1001px;
@@ -314,6 +317,7 @@
                                     position: relative !important;
                                     overflow: hidden !important;
                                     min-height: unset !important;
+                                    background: black;
 
                                     img {
                                         display: inline !important;
