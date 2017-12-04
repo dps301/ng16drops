@@ -8,6 +8,7 @@ import { AdminLayoutComponent } from './admin.layout.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from "@angular/common";
 import { PageNationComponent } from '../components/pagenation/pagenation';
+import { BtnComponent } from './btn/btn.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { PageNationComponent } from '../components/pagenation/pagenation';
     AdminResultComponent,
     ItemComponent,
     PageNationComponent,
+    BtnComponent,
   ],
   imports: [
     Routing,

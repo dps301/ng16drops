@@ -26,7 +26,7 @@ import { SafeHtmlPipe } from './components/pipe.safehtml';
     FormSelectComponent,
     FormCheckComponent,
     FormInputComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
   ],
   imports: [
     BrowserModule,

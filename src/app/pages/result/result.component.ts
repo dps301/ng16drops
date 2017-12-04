@@ -37,6 +37,7 @@ export class ResultComponent implements OnInit {
   result: any = {};
   items: Array<any> = [];
   id: number = 0;
+  btn_txt: string = "";
 
   constructor(private http: HttpService, private route: ActivatedRoute, private cdRef: ChangeDetectorRef) { }
 
@@ -66,6 +67,17 @@ export class ResultComponent implements OnInit {
         };
         this.cdRef.detectChanges();
         console.log(this.result);
+      }
+    );
+    this.getBtn();
+  }
+
+  getBtn() {
+    this.http.get('/btn')
+    .subscribe(
+      data => {
+        this.btn_txt = data.json().btn;
+        console.log(data.json());
       }
     );
   }
