@@ -14,6 +14,9 @@ export class UserComponent implements OnInit {
     pageSize: number = 15;
     totalSize: number = 0;
 
+    excel_start: number = 0;
+    excel_end: number = 0;
+
     constructor(private http: HttpService) { }
 
     ngOnInit() {
@@ -45,5 +48,14 @@ export class UserComponent implements OnInit {
                 this.detail = data.json();
             }
         );
+    }
+
+    excel() {
+        console.log(this.excel_start + ' ' + this.excel_end);
+        
+        if(this.excel_start > -1 && this.excel_end >= this.excel_start)
+            window.open(`http://form16.cafe24app.com/v/excel/download2?start=${this.excel_start}&end=${this.excel_end}`);
+        else
+            alert('저장범위를 확인해주세요.');
     }
 }

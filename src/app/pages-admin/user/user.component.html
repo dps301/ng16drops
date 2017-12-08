@@ -1,3 +1,6 @@
+<div class="excel-wrap">
+  엑셀 <input type="number" [(ngModel)]="excel_start"> ~ <input type="number" [(ngModel)]="excel_end"> <button (click)="excel()">저장</button>
+</div>
 <table>
   <thead>
     <td>번호</td>
@@ -8,6 +11,7 @@
     <td>결과3</td>
     <td>결과4</td>
     <td>결과5</td>
+    <td>일시</td>
     <td>자세히</td>
   </thead>
   <tbody>
@@ -20,8 +24,9 @@
       <td>{{item.con3}}</td>
       <td>{{item.con4}}</td>
       <td>{{item.con5}}</td>
+      <td>{{item.time | date:'y-MM-dd h:m:s'}}</td>
       <td><button (click)="find(item.formNo)">O</button></td>
-      <td><a [href]="'http://form16.cafe24app.com/v/excel/download?userFormNo='+item.formNo"><button>다운로드</button></a></td>
+      <!-- <td><a [href]="'http://form16.cafe24app.com/v/excel/download?userFormNo='+item.formNo"><button>다운로드</button></a></td> -->
     </tr>
   </tbody>
 </table>
