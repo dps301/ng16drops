@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { HttpService } from '../../services/http.service';
 import { ActivatedRoute } from "@angular/router";
 
+declare let Kakao;
+declare let FB;
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
@@ -88,5 +90,40 @@ export class ResultComponent implements OnInit {
 
   goShop() {
     window.open(this.result.link, '_system')
+  }
+
+  shareKt() {
+    let link = `http://form16.cafe24app.com/result/${this.id}`;
+    Kakao.Link.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: '16DROPS',
+        description: `당신의 피부타입은 ${this.result.name}입니다.`,
+        imageUrl: 'http://form16.cafe24app.com/img/rhddb.png',
+        link: {
+          mobileWebUrl: link,
+          webUrl: link
+        }
+      }
+    });
+  }
+
+  shareFb() {
+    let link = `http://form16.cafe24app.com/result/${this.id}`;
+    FB.ui({
+      method: 'share_open_graph',
+      action_type: 'og.shares',
+      display: 'popup',
+      action_properties: JSON.stringify({
+        object: {
+          'og:url': link,
+          'og:title': '16DROPS',
+          'og:description': `당신의 피부타입은 ${this.result.name}입니다.`,
+          'og:image': 'http://form16.cafe24app.com/img/rhddb2.png'
+        }
+      })
+    }, (response) => {
+      // Action after response
+    });
   }
 }
