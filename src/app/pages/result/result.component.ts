@@ -98,7 +98,7 @@ export class ResultComponent implements OnInit {
       objectType: 'feed',
       content: {
         title: '16DROPS',
-        description: `당신의 피부타입은 ${this.result.name}입니다.`,
+        description: `16가지 피부 유형 중 당신의 피부유형은?\n당신은 ${this.result.name}입니다.`,
         imageUrl: 'http://form16.cafe24app.com/img/rhddb.png',
         link: {
           mobileWebUrl: link,
@@ -118,7 +118,7 @@ export class ResultComponent implements OnInit {
         object: {
           'og:url': link,
           'og:title': '16DROPS',
-          'og:description': `당신의 피부타입은 ${this.result.name}입니다.`,
+          'og:description': `16가지 피부 유형 중 당신의 피부유형은?\n당신은 ${this.result.name}입니다.`,
           'og:image': 'http://form16.cafe24app.com/img/rhddb2.png'
         }
       })
