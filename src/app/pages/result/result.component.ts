@@ -29,7 +29,7 @@ export class ResultComponent implements OnInit {
   data = {};
   options = {
     responsive: true,
-    maintainAspectRatio: false,
+    maintainAspectRatio: true,
     legend: {
       display: false
     },
